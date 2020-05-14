@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "52945819388",
+    "firebase_url": "https://gradstar-36a76.firebaseio.com",
+    "project_id": "gradstar-36a76",
+    "storage_bucket": "gradstar-36a76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52945819388:android:b2015c13da7b5bfebf2979",
+        "android_client_info": {
+          "package_name": "com.example.gradstar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52945819388-brocaobmmbhtb3oab2cqbkirejjhmj4s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gradstar",
+            "certificate_hash": "8d387e3e4c644a4e94673264014436b6735a4e50"
+          }
+        },
+        {
+          "client_id": "52945819388-b7u6ktudbemiujvvpivm259a5rqh5tq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5xqY49o6vkjNIhLTWqiazsya6JLMoX24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52945819388-b7u6ktudbemiujvvpivm259a5rqh5tq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
