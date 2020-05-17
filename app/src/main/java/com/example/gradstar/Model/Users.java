@@ -2,16 +2,17 @@ package com.example.gradstar.Model;
 
 public class Users
 {
-    private String name, phoneNumber, password;
+    private String name, phone, password;
 
     public Users()
     {
 
     }
 
-    public Users(String name, String phoneNumber, String password) {
+    public Users(String name, String phone, String password)
+    {
         this.name = name;
-        this.phoneNumber = phoneNumber;
+        this.phone = phone;
         this.password = password;
     }
 
@@ -23,12 +24,12 @@ public class Users
         this.name = name;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getPassword() {
