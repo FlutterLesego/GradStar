@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_social"
+        android:enabled="true"
+        android:icon="@drawable/ic_group_black_24dp"
+        android:title="Social"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/action_jobs"
+        android:enabled="true"
+        android:icon="@drawable/ic_card_jobs_black_24dp"
+        android:title="Professional"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/action_notification"
+        android:enabled="true"
+        android:icon="@drawable/notification_icon"
+        android:title="Notifications"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/action_universities"
+        android:enabled="true"
+        android:icon="@drawable/universities_icon"
+        android:title="Universities"
+        app:showAsAction="ifRoom"
+        />
+
+</menu>
