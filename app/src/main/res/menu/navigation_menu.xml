@@ -2,49 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_home"
+        android:id="@+id/admin_nav_home_bottom"
         android:title="Home"
-        android:icon="@drawable/home_icon"
-        />
+        android:icon="@drawable/home_icon"/>
 
     <item
-        android:id="@+id/nav_messages"
-        android:title="Messages"
-        android:icon="@drawable/messages_icon"
-        />
+        android:id="@+id/admin_nav_social_bottom"
+        android:title="Social"
+        android:icon="@drawable/ic_social"/>
+
     <item
-        android:id="@+id/nav_notifications"
+        android:id="@+id/admin_nav_employer_bottom"
+        android:title="Professional"
+        android:icon="@drawable/ic_profession"/>
+
+    <item
+        android:id="@+id/admin_nav_notifications_bottom"
         android:title="Notifications"
-        android:icon="@drawable/notification_icon"
-        />
+        android:icon="@drawable/notification_icon"/>
+
     <item
-        android:id="@+id/nav_universities"
+        android:id="@+id/admin_nav_universities_bottom"
         android:title="Universities"
-        android:icon="@drawable/universities_icon"
-        />
-    <item
-        android:id="@+id/nav_sponsors"
-        android:title="Sponsors"
-        android:icon="@drawable/sponsors_icon"
-        />
-    <item
-        android:id="@+id/nav_events"
-        android:title="Events"
-        android:icon="@drawable/events_icon"
-        />
-    <item
-        android:id="@+id/nav_about"
-        android:title="About"
-        android:icon="@drawable/about_icon"/>
-    <item
-        android:id="@+id/nav_settings"
-        android:title="Settings"
-        android:icon="@drawable/settings_icon"
-        />
-    <item
-        android:id="@+id/nav_logout"
-        android:title="Logout"
-        android:icon="@drawable/logout_icon"
-        />
+        android:icon="@drawable/universities_icon"/>
+
+
 
 </menu>

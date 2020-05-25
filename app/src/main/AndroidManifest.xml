@@ -10,9 +10,55 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AdminUniversitiesActivity"
+            android:label="@string/title_activity_admin_universities"
+            android:parentActivityName=".AdminPanelActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gradstar.AdminPanelActivity" />
+        </activity>
+        <activity
+            android:name=".AdminNotificationsActivity"
+            android:label="@string/title_activity_admin_notifications"
+            android:parentActivityName=".AdminPanelActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gradstar.AdminPanelActivity" />
+        </activity>
+        <activity
+            android:name=".AdminProfessionalActivity"
+            android:label="@string/title_activity_admin_professional"
+            android:parentActivityName=".AdminPanelActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gradstar.AdminPanelActivity" />
+        </activity>
+        <activity
+            android:name=".AdminSocialActivity"
+            android:label="@string/title_activity_admin_social"
+            android:parentActivityName=".AdminPanelActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gradstar.AdminPanelActivity" />
+        </activity>
+        <activity android:name=".MentorshipActivity" />
+        <activity android:name=".InboxActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".SponsorsActivity" />
+        <activity android:name=".NotificationsActivity" />
+        <activity android:name=".ProfessionalActivity" />
+        <activity android:name=".UniversitiesActivity" />
+        <activity android:name=".SocialActivity" />
+        <activity android:name=".EventsActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity
             android:name=".UserProfileActivity"
             android:label="@string/title_activity_user_profile"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".PostActivity" />
         <activity android:name=".StudentsHomeActivity" />
         <activity

@@ -1,10 +1,9 @@
 package com.example.gradstar;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.RelativeLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -28,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
                 }
                 finally
                 {
-                    Intent welcomeIntent = new Intent(SplashActivity.this, MainActivity.class);
+                    Intent welcomeIntent = new Intent(SplashActivity.this, StudentsHomeActivity.class);
                     startActivity(welcomeIntent);
                 }
             }

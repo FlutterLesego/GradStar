@@ -5,19 +5,11 @@
     android:id="@+id/drawable_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminPanelActivity"
-    android:background="@color/colorPrimary">
+    tools:context=".AdminPanelActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <include
-            android:id="@+id/main_page_toolbar"
-            layout="@layout/app_bar_layout"
-            />
-
-
 
         <FrameLayout
             android:id="@+id/main_container"
@@ -28,85 +20,121 @@
                 android:id="@+id/all_posts_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="55dp"
-                android:layout_marginBottom="60dp"/>
+                android:layout_marginTop="55dp"/>
         </FrameLayout>
-    </RelativeLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:layout_marginBottom="3dp"
-        app:menu="@menu/navigation_user_menu"></com.google.android.material.navigation.NavigationView>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/constraint_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.example.gradstar.CurvedBottomNavigationView
-            android:id="@+id/bottom_nav"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav_bar"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            app:layout_constraintBottom_toBottomOf = "parent"
-            app:layout_constraintEnd_toEndOf = "parent"
-            app:layout_constraintEnd_toStartOf = "parent"></com.example.gradstar.CurvedBottomNavigationView>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            android:layout_height="wrap_content"
+            app:itemBackground="@android:color/white"
+            app:itemTextColor="@color/colorPrimary"
+            app:itemIconTint="@color/colorPrimary"
+            app:menu="@menu/navigation"
+            android:layout_alignParentBottom="true"/>
 
-    <RelativeLayout
-        android:id="@+id/lin_id"
-        android:layout_gravity="bottom|center"
-        android:layout_margin="40dp"
-        android:background="@drawable/oval"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/floating_menu"
+            android:layout_width="1500dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="6dp"
+            app:fab_addButtonSize="mini"
+            app:fab_labelStyle="@style/customFab"
+            app:fab_expandDirection="down"
+            app:fab_labelsPosition="right"
+            app:fab_addButtonColorNormal="@color/colorPrimaryDark"
+            app:fab_addButtonColorPressed="@color/colorPrimaryLight"
+            app:fab_addButtonPlusIconColor="@android:color/white"
+            app:srcCompat="@drawable/ic_profile">
 
-        <com.sdsmdg.harjot.vectormaster.VectorMasterView
-            android:id="@+id/home_fab"
-            android:layout_centerInParent="true"
-            android:layout_margin="12dp"
-            app:elevation="6dp"
-            app:vector_src="@drawable/ic_home_black_24dp"
-            android:layout_width="45dp"
-            android:layout_height="45dp"/>
-        <com.sdsmdg.harjot.vectormaster.VectorMasterView
-            android:id="@+id/social_fab"
-            android:layout_centerInParent="true"
-            android:layout_margin="12dp"
-            android:visibility="gone"
-            app:elevation="6dp"
-            app:vector_src="@drawable/ic_group_black_24dp"
-            android:layout_width="45dp"
-            android:layout_height="45dp"/>
-        <com.sdsmdg.harjot.vectormaster.VectorMasterView
-            android:id="@+id/jobs_fab"
-            android:layout_centerInParent="true"
-            android:layout_margin="12dp"
-            android:visibility="gone"
-            app:elevation="6dp"
-            app:vector_src="@drawable/ic_card_jobs_black_24dp"
-            android:layout_width="45dp"
-            android:layout_height="45dp"/>
-        <com.sdsmdg.harjot.vectormaster.VectorMasterView
-            android:id="@+id/notification_fab"
-            android:layout_centerInParent="true"
-            android:layout_margin="12dp"
-            android:visibility="gone"
-            app:elevation="6dp"
-            app:vector_src="@drawable/ic_notifications_black_24dp"
-            android:layout_width="45dp"
-            android:layout_height="45dp"/>
-        <com.sdsmdg.harjot.vectormaster.VectorMasterView
-            android:id="@+id/university_fab"
-            android:layout_centerInParent="true"
-            android:layout_margin="12dp"
-            android:visibility="gone"
-            app:elevation="6dp"
-            app:vector_src="@drawable/ic_school_black_24dp"
-            android:layout_width="45dp"
-            android:layout_height="45dp"/>
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_signout_btn"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_above="@id/fab_settings_btn"
+                app:fab_colorNormal="@color/colorPrimaryDark"
+                app:fab_colorPressed="@color/colorPrimaryLight"
+                app:fab_size="mini"
+                app:fab_icon="@drawable/ic_logout"
+                app:fab_title="Sign out"
+                />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_settings_btn"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fab_about_btn"
+                app:fab_colorNormal="@color/colorPrimaryDark"
+                app:fab_colorPressed="@color/colorPrimaryLight"
+                app:fab_size="mini"
+                app:fab_icon="@drawable/ic_settings_black_24dp"
+                app:fab_title="Settings"
+                />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_about_btn"
+                android:layout_width="1500dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fab_sponsors_btn"
+                app:fab_colorNormal="@color/colorPrimaryDark"
+                app:fab_colorPressed="@color/colorPrimaryLight"
+                app:fab_size="mini"
+                app:fab_icon="@drawable/ic_info_outline_black_24dp"
+                app:fab_title="About"
+                />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_sponsors_btn"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fab_events_btn"
+                app:fab_colorNormal="@color/colorPrimaryDark"
+                app:fab_colorPressed="@color/colorPrimaryLight"
+                app:fab_size="mini"
+                app:fab_icon="@drawable/ic_account_balance_black_24dp"
+                app:fab_title="Sponsors"/>
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_events_btn"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fab_profile_btn"
+                app:fab_colorNormal="@color/colorPrimaryDark"
+                app:fab_colorPressed="@color/colorPrimaryLight"
+                app:fab_size="mini"
+                app:fab_icon="@drawable/ic_event_black_24dp"
+                app:fab_title="Events"
+                />
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_profile_btn"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/floating_menu"
+                app:fab_colorNormal="@color/colorPrimaryDark"
+                app:fab_colorPressed="@color/colorPrimaryLight"
+                app:fab_size="mini"
+                app:fab_icon="@drawable/ic_profile"
+                app:fab_title="View Profile"
+                />
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+        <ImageButton
+            android:id="@+id/inbox_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/inbox"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="20dp"
+            android:elevation="4dp"
+            android:background="@drawable/bar_backgound"
+            />
+
     </RelativeLayout>
+
+
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

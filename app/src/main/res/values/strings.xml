@@ -119,4 +119,9 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="title_activity_inbox">InboxActivity</string>
+    <string name="title_activity_admin_social">AdminSocialActivity</string>
+    <string name="title_activity_admin_professional">AdminProfessionalActivity</string>
+    <string name="title_activity_admin_notifications">AdminNotificationsActivity</string>
+    <string name="title_activity_admin_universities">AdminUniversitiesActivity</string>
 </resources>

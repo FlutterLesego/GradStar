@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminPanelActivity">
+    tools:context=".AdminPanelActivity"
+    android:background="@color/colorPrimary">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,7 +13,7 @@
 
         <include
             android:id="@+id/admin_toolbar"
-            layout="@layout/app_bar_layout"/>
+            layout="@layout/app_bar_layout" />
 
         <FrameLayout
             android:id="@+id/main_container"
@@ -30,10 +31,22 @@
             android:id="@+id/add_post_btn"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/add_post"/>
+            android:layout_above="@id/admin_bottom_nav_bar"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_add"
+            android:background="@drawable/grad_background"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/admin_bottom_nav_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itemBackground="@android:color/white"
+            app:itemTextColor="@color/colorPrimary"
+            app:itemIconTint="@color/colorPrimary"
+            app:menu="@menu/navigation_menu"
+            android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView

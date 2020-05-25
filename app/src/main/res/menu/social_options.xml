@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/wifi_option"
+        android:title="WIFI"
+        android:icon="@drawable/ic_wifi_black_24dp"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/hotline-option"
+        android:title="Helpline"
+        android:icon="@drawable/ic_phone_black_24dp"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/discounts_option"
+        android:title="Students Discounts"
+        android:icon="@drawable/ic_local_offer_black_24dp"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/competitions_option"
+        android:title="Competitions"
+        android:icon="@drawable/ic_competition"
+        app:showAsAction="always"
+        />
+
+</menu>

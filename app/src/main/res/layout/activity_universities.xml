@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UniversitiesActivity">
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/floating_menu"
+        android:layout_width="1500dp"
+        android:layout_height="50dp"
+        app:fab_labelStyle="@style/customFab"
+        app:fab_expandDirection="down"
+        app:fab_labelsPosition="right"
+        app:fab_addButtonColorNormal="@color/colorPrimaryDark"
+        app:fab_addButtonColorPressed="@color/colorPrimaryLight"
+        app:fab_addButtonPlusIconColor="@android:color/white"
+        app:srcCompat="@drawable/ic_profile">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_signout_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_above="@id/fab_settings_btn"
+            app:fab_colorNormal="@color/colorPrimaryDark"
+            app:fab_colorPressed="@color/colorPrimaryLight"
+            app:fab_size="mini"
+            app:fab_icon="@drawable/ic_logout"
+            app:fab_title="Sign out"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_settings_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/fab_about_btn"
+            app:fab_colorNormal="@color/colorPrimaryDark"
+            app:fab_colorPressed="@color/colorPrimaryLight"
+            app:fab_size="mini"
+            app:fab_icon="@drawable/ic_settings_black_24dp"
+            app:fab_title="Settings"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_about_btn"
+            android:layout_width="1500dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/fab_sponsors_btn"
+            app:fab_colorNormal="@color/colorPrimaryDark"
+            app:fab_colorPressed="@color/colorPrimaryLight"
+            app:fab_size="mini"
+            app:fab_icon="@drawable/ic_info_outline_black_24dp"
+            app:fab_title="About"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_sponsors_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/fab_events_btn"
+            app:fab_colorNormal="@color/colorPrimaryDark"
+            app:fab_colorPressed="@color/colorPrimaryLight"
+            app:fab_size="mini"
+            app:fab_icon="@drawable/ic_account_balance_black_24dp"
+            app:fab_title="Sponsors"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_events_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/fab_profile_btn"
+            app:fab_colorNormal="@color/colorPrimaryDark"
+            app:fab_colorPressed="@color/colorPrimaryLight"
+            app:fab_size="mini"
+            app:fab_icon="@drawable/ic_event_black_24dp"
+            app:fab_title="Events"
+            />
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_profile_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/floating_menu"
+            app:fab_colorNormal="@color/colorPrimaryDark"
+            app:fab_colorPressed="@color/colorPrimaryLight"
+            app:fab_size="mini"
+            app:fab_icon="@drawable/ic_profile"
+            app:fab_title="View Profile"
+            />
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/inbox"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="13dp"
+        android:layout_marginRight="20dp"
+        android:elevation="4dp"
+        android:background="@drawable/bar_backgound"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Universities"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@android:color/white"
+        app:itemTextColor="@color/colorPrimary"
+        app:itemIconTint="@color/colorPrimary"
+        app:menu="@menu/navigation"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

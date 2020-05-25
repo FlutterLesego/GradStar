@@ -2,26 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_home"
-        android:title="Home"
-        android:icon="@drawable/home_icon"
-        />
-    <item
-        android:id="@+id/nav_profile"
-        android:title="Profile"
-        android:icon="@drawable/profile_icon"
-        />
-    <item
-        android:id="@+id/nav_universities"
-        android:title="Universities"
-        android:icon="@drawable/universities_icon"
-        />
-    <item
-        android:id="@+id/nav_employer"
-        android:title="Employers"
-        android:icon="@drawable/employer_icon"
-        />
-    <item
         android:id="@+id/nav_sponsors"
         android:title="Sponsors"
         android:icon="@drawable/sponsors_icon"
