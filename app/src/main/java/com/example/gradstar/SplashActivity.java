@@ -27,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
                 }
                 finally
                 {
-                    Intent welcomeIntent = new Intent(SplashActivity.this, StudentsHomeActivity.class);
+                    Intent welcomeIntent = new Intent(SplashActivity.this, LoginActivity.class);
                     startActivity(welcomeIntent);
                 }
             }

@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity
 {
     private EditText InputPhoneNumber, InputPassword;
-    private Button LoginButton;
+    private Button LoginButton, RegisterButton;
     private ProgressDialog loadingBar;
     private TextView AdminLink, NotAdmin;
 
@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        RegisterButton = (Button) findViewById(R.id.register_edit) ;
         LoginButton = (Button) findViewById(R.id.login_btn);
         InputPhoneNumber = (EditText) findViewById(R.id.login_phone_number);
         InputPassword = (EditText) findViewById(R.id.login_password_input);
@@ -49,6 +50,17 @@ public class LoginActivity extends AppCompatActivity
             {
                 LoginUser();
 
+            }
+        });
+
+        RegisterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                loadingBar.show();
+                loadingBar.setMessage("Please wait...");
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 

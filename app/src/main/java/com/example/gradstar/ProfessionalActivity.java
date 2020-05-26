@@ -3,18 +3,30 @@ package com.example.gradstar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gradstar.Adapter.EmployerAdapter;
+import com.example.gradstar.Model.Employers;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 public class ProfessionalActivity extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    private EmployerAdapter employerAdapter;
+    private List<Employers> mEmployers;
+    EditText search_bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professional);
+
 
         //Initialize and assign variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_bar);

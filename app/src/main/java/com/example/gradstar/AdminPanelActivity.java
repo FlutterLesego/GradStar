@@ -86,7 +86,7 @@ public class AdminPanelActivity extends AppCompatActivity
 
     private void SendUserToCategoriesActivity()
     {
-        Intent addNewPostIntent = new Intent(AdminPanelActivity.this,AdminCategoryActivity.class);
+        Intent addNewPostIntent = new Intent(AdminPanelActivity.this,FeedActivity.class);
         startActivity(addNewPostIntent);
     }
 }

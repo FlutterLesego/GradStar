@@ -1,8 +1,5 @@
 package com.example.gradstar;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -69,6 +69,10 @@ public class RegisterActivity extends AppCompatActivity
         {
             Toast.makeText(this, "Password required", Toast.LENGTH_SHORT).show();
         }
+        else if (password.length()<6)
+        {
+            Toast.makeText(this, "Password must have at least 6 characters", Toast.LENGTH_SHORT).show();
+        }
         else
         {
             loadingBar.setTitle("Creating account");
@@ -121,9 +125,10 @@ public class RegisterActivity extends AppCompatActivity
                 }
                 else
                 {
-                    Toast.makeText(RegisterActivity.this, ""+ phone + "already in use", Toast.LENGTH_SHORT).show();
-                    loadingBar.dismiss();
+                    Toast.makeText(RegisterActivity.this, ""+ phone + " " + "already in use", Toast.LENGTH_SHORT).show();
+                    loadingBar.show();
                     Toast.makeText(RegisterActivity.this, "Please try again using another phone number", Toast.LENGTH_SHORT).show();
+                    loadingBar.dismiss();
 
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
