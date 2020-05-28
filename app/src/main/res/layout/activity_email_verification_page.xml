@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:id="@+id/logo_verification"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:src="@drawable/applogo"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:id="@+id/verify_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please Verify Your Email Address To Contine"
+            android:textColor="@color/colorAccent"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/logo_verification">
+
+        <Button
+            android:id="@+id/continue_btn"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Email Verified"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:elevation="10dp"
+            android:textColor="@color/colorAccent"
+            android:background="@drawable/buttons"
+            android:layout_below="@id/verify_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"/>
+        </TextView>
+    </ImageView>
+
+</RelativeLayout>

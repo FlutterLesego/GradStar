@@ -16,6 +16,7 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class StudentsHomeActivity extends AppCompatActivity
 {
@@ -24,14 +25,20 @@ public class StudentsHomeActivity extends AppCompatActivity
     private Toolbar mToolBar;
     private ProgressDialog loadingBar;
 
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_students_home);
 
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        if (firebaseUser !=null && firebaseUser.isEmailVerified())
+        {
+            startActivity(new Intent(StudentsHomeActivity.this, UserProfileActivity.class));
+        }
+
 
         //Initialize and assign variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_bar);

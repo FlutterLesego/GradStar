@@ -14,6 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gradstar.Model.Users;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,10 +26,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity
 {
-    private EditText InputPhoneNumber, InputPassword;
+    private EditText InputEmailAddress, InputPassword;
     private Button LoginButton, RegisterButton;
     private ProgressDialog loadingBar;
     private TextView AdminLink, NotAdmin;
+
+    private FirebaseAuth firebaseAuth;
+
 
     private String parentDbName = "Users";
 
@@ -37,11 +44,13 @@ public class LoginActivity extends AppCompatActivity
 
         RegisterButton = (Button) findViewById(R.id.register_edit) ;
         LoginButton = (Button) findViewById(R.id.login_btn);
-        InputPhoneNumber = (EditText) findViewById(R.id.login_phone_number);
+        InputEmailAddress = (EditText) findViewById(R.id.login_email_address);
         InputPassword = (EditText) findViewById(R.id.login_password_input);
         AdminLink = (TextView) findViewById(R.id.admin_panel);
         NotAdmin = (TextView) findViewById(R.id.not_admin_panel);
         loadingBar= new ProgressDialog(this);
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
@@ -92,12 +101,12 @@ public class LoginActivity extends AppCompatActivity
 
     private void LoginUser()
     {
-        String phone = InputPhoneNumber.getText().toString();
+        String email = InputEmailAddress.getText().toString();
         String password = InputPassword.getText().toString();
 
-        if (TextUtils.isEmpty(phone))
+        if (TextUtils.isEmpty(email))
         {
-            Toast.makeText(this, "Phone number required", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Email address required", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(password))
         {
@@ -105,16 +114,47 @@ public class LoginActivity extends AppCompatActivity
         }
         else
         {
-            loadingBar.setTitle("Logging in...");
-            loadingBar.setMessage("Please wait while we check your credentials");
-            loadingBar.setCanceledOnTouchOutside(false);
-            loadingBar.show();
 
-            AllowAccessToAccount(phone, password);
+            LoginButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    loadingBar.setTitle("Logging in...");
+                    loadingBar.setMessage("Please wait while we check your credentials");
+                    loadingBar.setCanceledOnTouchOutside(false);
+                    loadingBar.show();
+                    firebaseAuth.signInWithEmailAndPassword(InputEmailAddress.getText().toString(),
+                            InputPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task)
+                        {
+                            loadingBar.dismiss();
+                            if (task.isSuccessful())
+                            {
+                                if (firebaseAuth.getCurrentUser().isEmailVerified()
+                                ) {
+                                    startActivity(new Intent(LoginActivity.this, StudentsHomeActivity.class));
+
+                                }
+                                else
+                                {
+                                    Toast.makeText(LoginActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            else
+                            {
+                                Toast.makeText(LoginActivity.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    });
+
+                }
+            });
         }
     }
 
-    private void AllowAccessToAccount(final String phone, final String password)
+    private void AllowAccessToAccount(final String email, final String password)
     {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -123,10 +163,10 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                if (dataSnapshot.child(parentDbName).child(phone).exists())
+                if (dataSnapshot.child(parentDbName).child(email).exists())
                 {
-                    Users usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users.class);
-                    if (usersData.getPhone().equals(phone))
+                    Users usersData = dataSnapshot.child(parentDbName).child(email).getValue(Users.class);
+                    if (usersData.getEmail().equals(email))
                     {
                         if (usersData.getPassword().equals(password))
                         {

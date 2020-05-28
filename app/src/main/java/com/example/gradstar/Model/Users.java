@@ -2,7 +2,7 @@ package com.example.gradstar.Model;
 
 public class Users
 {
-    private String name, phone, password;
+    private String name, email, password;
 
     public Users()
     {
@@ -12,7 +12,7 @@ public class Users
     public Users(String name, String phone, String password)
     {
         this.name = name;
-        this.phone = phone;
+        this.email = phone;
         this.password = password;
     }
 
@@ -24,12 +24,12 @@ public class Users
         this.name = name;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setEmail(String phone) {
+        this.email = email;
     }
 
     public String getPassword() {
