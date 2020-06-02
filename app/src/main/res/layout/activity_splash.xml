@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
-    android:background="@drawable/grad_background">
+    android:background="@drawable/curve2">
 
     <RelativeLayout
         android:layout_width="match_parent"

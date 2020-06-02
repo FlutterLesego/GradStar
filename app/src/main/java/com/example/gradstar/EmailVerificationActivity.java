@@ -7,14 +7,15 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class EmailVerificationPage extends AppCompatActivity
-{
+public class EmailVerificationActivity extends AppCompatActivity {
+
     private Button Continue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_email_verification_page);
+        setContentView(R.layout.activity_email_verification);
 
         Continue = (Button) findViewById(R.id.continue_btn);
 
@@ -22,7 +23,7 @@ public class EmailVerificationPage extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(EmailVerificationPage.this, LoginActivity.class);
+                Intent intent = new Intent(EmailVerificationActivity.this, LoginActivity.class);
                 startActivity(intent);
 
             }

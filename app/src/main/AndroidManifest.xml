@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gradstar">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FeedActivity"></activity>
+        <activity android:name=".ProfileCreateActivity"></activity>
+        <activity android:name=".EmailVerificationActivity" />
+        <activity android:name=".FeedActivity" />
         <activity
             android:name=".AdminUniversitiesActivity"
             android:label="@string/title_activity_admin_universities"
@@ -72,7 +74,6 @@
         <activity android:name=".AdminCategoryActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".EmailVerificationPage"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".AdminPanelActivity" />
         <activity

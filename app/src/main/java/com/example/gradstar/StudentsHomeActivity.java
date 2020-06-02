@@ -34,10 +34,6 @@ public class StudentsHomeActivity extends AppCompatActivity
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        if (firebaseUser !=null && firebaseUser.isEmailVerified())
-        {
-            startActivity(new Intent(StudentsHomeActivity.this, UserProfileActivity.class));
-        }
 
 
         //Initialize and assign variable

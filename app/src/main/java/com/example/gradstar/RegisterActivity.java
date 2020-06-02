@@ -17,7 +17,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseError;
 
 public class RegisterActivity extends AppCompatActivity
 {
@@ -108,8 +107,8 @@ public class RegisterActivity extends AppCompatActivity
                                         if (task.isSuccessful())
                                         {
                                             Toast.makeText(RegisterActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(RegisterActivity.this, EmailVerificationPage.class);
-                                            startActivity(intent);
+                                            Intent verifyIntent = new Intent(RegisterActivity.this, ProfileCreateActivity.class);
+                                            startActivity(verifyIntent);
                                         }
                                         else
                                         {
@@ -183,10 +182,10 @@ public class RegisterActivity extends AppCompatActivity
         //    }
 //
   //          @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            //public void onCancelled(@NonNull DatabaseError databaseError)
+            //{
 
-            }
+            //}
       //  });
     //}
 }

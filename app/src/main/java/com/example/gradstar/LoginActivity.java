@@ -119,8 +119,7 @@ public class LoginActivity extends AppCompatActivity
                 @Override
                 public void onClick(View v)
                 {
-                    loadingBar.setTitle("Logging in...");
-                    loadingBar.setMessage("Please wait while we check your credentials");
+                    loadingBar.setMessage("Please wait...");
                     loadingBar.setCanceledOnTouchOutside(false);
                     loadingBar.show();
                     firebaseAuth.signInWithEmailAndPassword(InputEmailAddress.getText().toString(),

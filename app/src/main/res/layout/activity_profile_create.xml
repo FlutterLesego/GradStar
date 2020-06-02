@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:background="@drawable/curve2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <ImageView
+       android:id="@+id/register_applogo"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:src="@drawable/applogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:layout_below="@id/register_applogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/registration_page"
+        android:text="Registration"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:padding="2dp"
+        android:layout_centerHorizontal="true"/>
+    //
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_hint"
+        android:text="Full name (as shown on ID):"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/registration_page"
+        android:padding="1dp"
+        android:layout_marginLeft="23dp"/>
+
+    <EditText
+        android:id="@+id/register_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_hint"
+        android:background="@drawable/bar_backgound"
+        android:padding="6dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint=" e.g. Chris Kyle Mofokeng"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        />
+
+    //
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_hint"
+        android:text="Identification number:"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/register_name_input"
+        android:padding="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/register_id_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_hint"
+        android:background="@drawable/bar_backgound"
+        android:padding="6dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint=" e.g. 2012022019081"
+        android:inputType="number"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        />
+//
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/language_hint"
+        android:text="First language:"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/register_id_number"
+        android:padding="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/register_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/language_hint"
+        android:background="@drawable/bar_backgound"
+        android:padding="6dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint=" e.g. Xhosa, Sotho, English, etc"
+        android:inputType="textCapWords"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        />
+//
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/stu_card_number_hint"
+        android:text="Student card number:"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/register_language"
+        android:padding="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+    android:id="@+id/register_stud_card_number"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/stu_card_number_hint"
+    android:background="@drawable/bar_backgound"
+    android:padding="6dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:hint=" e.g. 220002020"
+    android:inputType="number"
+    android:textColor="@color/colorPrimaryDark"
+    android:textSize="12sp"
+    android:textStyle="normal"
+    />
+//
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/interests_hint"
+        android:text="Top 10 hobbies/ interests/ passions:"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/register_stud_card_number"
+        android:padding="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/register_interests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/interests_hint"
+        android:background="@drawable/bar_backgound"
+        android:padding="6dp"
+        android:gravity="start"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint=" e.g. cycling, singing, acting, cooking, gym, etc"
+        android:inputType="textMultiLine"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        />
+//
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/part_time_hint"
+        android:text="Part time jobs done:"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/register_interests"
+        android:padding="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/register_part_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/part_time_hint"
+        android:background="@drawable/bar_backgound"
+        android:padding="6dp"
+        android:gravity="start"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint=" e.g. cashier, surf instructor, tutoring (if none, please indicate)"
+        android:inputType="textMultiLine"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        />
+//
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/traits_hint"
+        android:text="Your top 5 characteristics:"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/register_part_time"
+        android:padding="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/register_traits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/traits_hint"
+        android:background="@drawable/bar_backgound"
+        android:padding="6dp"
+        android:gravity="start"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint=" e.g. hard worker, problem solving, team player, passionate, kind"
+        android:inputType="textMultiLine"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        />
+
+    //
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/companies_hint"
+        android:text="Top 5 companies you would like to work for:"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/register_traits"
+        android:padding="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/register_brands"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/companies_hint"
+        android:background="@drawable/bar_backgound"
+        android:padding="6dp"
+        android:gravity="start"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint=" e.g. Absa, Accenture, Eprioc, Fasken, DHL Africa"
+        android:inputType="textMultiLine"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gpa_hint"
+        android:text="GRADE AVERAGE:"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/register_brands"
+        android:padding="1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/register_gpa"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gpa_hint"
+        android:background="@drawable/bar_backgound"
+        android:padding="6dp"
+        android:gravity="start"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint=" e.g. 65"
+        android:layout_centerHorizontal="true"
+        android:inputType="numberDecimal"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        />
+
+    <Button
+        android:id="@+id/employment_date"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="Year available for employment"
+        android:layout_below="@id/register_gpa"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/bar_backgound"
+        android:textColor="@color/colorPrimaryDark"
+        android:elevation="3dp"/>
+
+    <TextView
+        android:id="@+id/employment_date_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_below="@id/employment_date"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        />
+
+    //
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/number_hint"
+        android:text="Mobile number:"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/employment_date_display"
+        android:padding="1dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/register_mobile"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/number_hint"
+        android:background="@drawable/bar_backgound"
+        android:padding="6dp"
+        android:gravity="start"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint=" e.g. 0620200202"
+        android:inputType="number"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/whatsapp_hint"
+        android:text="Whatsapp (if applicable):"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/employment_date_display"
+        android:layout_marginLeft="19dp"
+        android:layout_toRightOf="@id/register_mobile"
+        android:padding="1dp"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/register_whatsapp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/number_hint"
+        android:layout_toRightOf="@id/register_mobile"
+        android:background="@drawable/bar_backgound"
+        android:layout_centerInParent="true"
+        android:padding="6dp"
+        android:gravity="start"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="15dp"
+        android:hint=" e.g. 0620200202"
+        android:inputType="number"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        />
+
+    <Button
+        android:id="@+id/proceed_btn"
+        android:layout_below="@id/register_mobile"
+        android:layout_width="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:background="@drawable/bar_backgound"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:text="Proceed"
+        android:textColor="@color/colorPrimaryDark"
+        />
+        </RelativeLayout>
+</ScrollView>
+
+</RelativeLayout>
