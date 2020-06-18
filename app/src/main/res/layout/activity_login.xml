@@ -109,34 +109,6 @@
 
         />
 
-    <TextView
-        android:id="@+id/admin_panel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Admin"
-        android:layout_below="@id/sign_in_with"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:layout_marginTop="100dp"
-        android:gravity="center_vertical"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/white"
-        />
-
-    <TextView
-        android:id="@+id/not_admin_panel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Not an Admin"
-        android:layout_below="@id/admin_panel"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorPrimary"
-        android:visibility="invisible"
-        />
 
     <Button
         android:id="@+id/register_edit"

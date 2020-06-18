@@ -1,7 +1,9 @@
 package com.example.gradstar;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -30,15 +32,43 @@ import java.util.HashMap;
 
 public class ProfileCreateActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
+    private String [] employmentDateList, universitiesList, coursesList, gradeList, ethnicityList, genderList, disabilityList, bursaryList;
     private EditText InputName, InputIdNumber, InputLanguage, InputStudentNumber, InputHobbies;
-    private EditText InputJobs, InputTraits, InputCompanies, InputGrade, InputMobile, InputWhatsapp;
-    private Button ProceedButton;
+    private EditText InputJobs, InputTraits, InputCompanies;
+    private TextView EmploymentDateDisplay, UniversityDisplay, CourseDisplay, GradeDisplay, EthnicityDisplay, GenderDisplay, DisabilityDisplay, BursaryDisplay;
+    private Button ProceedButton, EmploymentDate, UniversityStudent, CourseButton, GradeButton, EthnicityButton, GenderButton, DisabilityButton, BursaryButton;
     private ProgressDialog loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_create);
+
+        EmploymentDate = (Button) findViewById(R.id.employment_date);
+        EmploymentDateDisplay = (TextView) findViewById(R.id.employment_date_display);
+
+        UniversityStudent = (Button) findViewById(R.id.universities_btn);
+        UniversityDisplay = (TextView) findViewById(R.id.universities_tv);
+        universitiesList = getResources().getStringArray(R.array.universities_preferred);
+
+        CourseButton = (Button) findViewById(R.id.courses_btn);
+        CourseDisplay = (TextView) findViewById(R.id.course_tv);
+        coursesList = getResources().getStringArray(R.array.courses_preffered);
+
+        GradeButton = (Button) findViewById(R.id.grade_btn);
+        GradeDisplay =(TextView) findViewById(R.id.grade_tv);
+
+        EthnicityButton = (Button) findViewById(R.id.ethnicity_btn);
+        EthnicityDisplay = (TextView) findViewById(R.id.ethnicity_tv);
+
+        GenderButton = (Button) findViewById(R.id.gender_btn);
+        GenderDisplay = (TextView) findViewById(R.id.gender_tv);
+
+        DisabilityButton = (Button) findViewById(R.id.disability_btn);
+        DisabilityDisplay = (TextView) findViewById(R.id.disability_tv);
+
+        BursaryButton = (Button) findViewById(R.id.bursary_btn);
+        BursaryDisplay = (TextView) findViewById(R.id.bursary_tv);
 
         ProceedButton = (Button) findViewById(R.id.proceed_btn);
         InputName = (EditText) findViewById(R.id.register_name_input);
@@ -49,10 +79,114 @@ public class ProfileCreateActivity extends AppCompatActivity implements DatePick
         InputJobs = (EditText) findViewById(R.id.register_part_time);
         InputTraits= (EditText) findViewById(R.id.register_traits);
         InputCompanies = (EditText) findViewById(R.id.register_brands);
-        InputGrade = (EditText) findViewById(R.id.register_gpa);
-        InputMobile = (EditText) findViewById(R.id.register_mobile);
-        InputWhatsapp = (EditText) findViewById(R.id.register_whatsapp);
         loader = new ProgressDialog(this);
+
+        EmploymentDate.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                //list of items
+                employmentDateList = new String[] {"2021", "2022","2023","2024","2025","2026","2027","2028", "2029", "2030"};
+                AlertDialog.Builder eBuilder = new AlertDialog.Builder(ProfileCreateActivity.this);
+                eBuilder.setTitle("Year available for employment:");
+                eBuilder.setSingleChoiceItems(employmentDateList, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        EmploymentDateDisplay.setText(employmentDateList[which]);
+                        dialog.dismiss();
+                    }
+                });
+                eBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog eDialog = eBuilder.create();
+                eDialog.show();
+            }
+        });
+
+        UniversityStudent.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                AlertDialog.Builder uniBuilder = new AlertDialog.Builder(ProfileCreateActivity.this);
+                uniBuilder.setTitle("University:");
+                uniBuilder.setSingleChoiceItems(universitiesList, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        UniversityDisplay.setText(universitiesList[which]);
+                        dialog.dismiss();
+                    }
+                });
+                uniBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog uniDialog = uniBuilder.create();
+                uniDialog.show();
+            }
+        });
+
+        CourseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                AlertDialog.Builder coBuilder = new AlertDialog.Builder(ProfileCreateActivity.this);
+                coBuilder.setTitle("Course:");
+                coBuilder.setSingleChoiceItems(coursesList, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        CourseDisplay.setText(coursesList[which]);
+                        dialog.dismiss();
+                    }
+                });
+                coBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog coDialog = coBuilder.create();
+                coDialog.show();
+            }
+        });
+
+        GradeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //list of items
+                gradeList = new String[] {"90+", "80% - 89%","70% - 79%","60% - 69%","50% - 59%","40% - 49%","less than 40%"};
+                AlertDialog.Builder gBuilder = new AlertDialog.Builder(ProfileCreateActivity.this);
+                gBuilder.setTitle("Grade average:");
+                gBuilder.setSingleChoiceItems(gradeList, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        GradeDisplay.setText(gradeList[which]);
+                        dialog.dismiss();
+                    }
+                });
+                gBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog gDialog = gBuilder.create();
+                gDialog.show();
+
+            }
+        });
 
         ProceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +197,113 @@ public class ProfileCreateActivity extends AppCompatActivity implements DatePick
             }
         });
 
+        EthnicityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //list of items
+                ethnicityList = new String[] {"Black", "Coloured","Chinese","Indian","White","Other"};
+                AlertDialog.Builder ethBuilder = new AlertDialog.Builder(ProfileCreateActivity.this);
+                ethBuilder.setTitle("Ethnicity:");
+                ethBuilder.setSingleChoiceItems(ethnicityList, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        EthnicityDisplay.setText(ethnicityList[which]);
+                        dialog.dismiss();
+                    }
+                });
+                ethBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog ethDialog = ethBuilder.create();
+                ethDialog.show();
+            }
+        });
+
+        GenderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //list of items
+                genderList = new String[] {"Male", "Female"};
+                AlertDialog.Builder gBuilder = new AlertDialog.Builder(ProfileCreateActivity.this);
+                gBuilder.setTitle("Gender:");
+                gBuilder.setSingleChoiceItems(genderList, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        GenderDisplay.setText(genderList[which]);
+                        dialog.dismiss();
+                    }
+                });
+                gBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog gDialog = gBuilder.create();
+                gDialog.show();
+            }
+        });
+
+        DisabilityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //list of items
+                disabilityList = new String[] {"Yes", "No"};
+                AlertDialog.Builder dBuilder = new AlertDialog.Builder(ProfileCreateActivity.this);
+                dBuilder.setTitle("Type of disability:");
+                dBuilder.setSingleChoiceItems(disabilityList, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DisabilityDisplay.setText(disabilityList[which]);
+                        dialog.dismiss();
+                    }
+                });
+                dBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dDialog = dBuilder.create();
+                dDialog.show();
+
+            }
+        });
+
+        BursaryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //list of items
+                bursaryList = new String[] {"Yes", "No"};
+                AlertDialog.Builder bBuilder = new AlertDialog.Builder(ProfileCreateActivity.this);
+                bBuilder.setTitle("Bursary:");
+                bBuilder.setSingleChoiceItems(bursaryList, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        BursaryDisplay.setText(bursaryList[which]);
+                        dialog.dismiss();
+                    }
+                });
+                bBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog bDialog = bBuilder.create();
+                bDialog.show();
+
+            }
+        });
 
         Button dateButton = (Button) findViewById(R.id.employment_date);
         dateButton.setOnClickListener(new View.OnClickListener() {
@@ -86,8 +327,6 @@ public class ProfileCreateActivity extends AppCompatActivity implements DatePick
         String jobs = InputJobs.getText().toString();
         String traits = InputTraits.getText().toString();
         String companies = InputCompanies.getText().toString();
-        String grade = InputGrade.getText().toString();
-        String mobile = InputMobile.getText().toString();
         
         if(TextUtils.isEmpty(name))
         {
@@ -121,14 +360,6 @@ public class ProfileCreateActivity extends AppCompatActivity implements DatePick
         {
             Toast.makeText(this, "Companies required for matching", Toast.LENGTH_SHORT).show();
         }
-        else if(TextUtils.isEmpty(grade))
-        {
-            Toast.makeText(this, "Grade required", Toast.LENGTH_SHORT).show();
-        }
-        else if(TextUtils.isEmpty(mobile))
-        {
-            Toast.makeText(this, "Mobile number required", Toast.LENGTH_SHORT).show();
-        }
         else
         {
             loader.setTitle("Registering");
@@ -136,12 +367,12 @@ public class ProfileCreateActivity extends AppCompatActivity implements DatePick
             loader.setCanceledOnTouchOutside(false);
             loader.show();
 
-            ValidateidNumber(name, idnumber,language, student, hobbies, jobs, traits, companies, grade, mobile);
+            ValidateidNumber(name, idnumber,language, student, hobbies, jobs, traits, companies);
         }
 
     }
 
-    private void ValidateidNumber(final String name, final String idnumber, final String language, final String student, final String hobbies, final String jobs, final String traits, final String companies, final String grade, final String mobile)
+    private void ValidateidNumber(final String name, final String idnumber, final String language, final String student, final String hobbies, final String jobs, final String traits, final String companies)
     {
         final DatabaseReference RootReference;
         RootReference = FirebaseDatabase.getInstance().getReference();
@@ -161,8 +392,6 @@ public class ProfileCreateActivity extends AppCompatActivity implements DatePick
                     userdataMap.put("part time jobs", jobs);
                     userdataMap.put("characteristics", traits);
                     userdataMap.put("companies", companies);
-                    userdataMap.put("grade", grade);
-                    userdataMap.put("mobile", mobile);
 
                     RootReference.child("Users").child(idnumber).updateChildren(userdataMap)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {

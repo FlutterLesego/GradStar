@@ -73,7 +73,7 @@ public class PostActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
 
-        PostImagesReference = FirebaseStorage.getInstance().getReference().child("Images");
+        PostImagesReference = FirebaseStorage.getInstance().getReference().child("JobsImages");
         JobRef = FirebaseDatabase.getInstance().getReference().child("Jobs");
 
         SelectPostImage = (ImageButton) findViewById(R.id.add_imageButton);
@@ -127,12 +127,7 @@ public class PostActivity extends AppCompatActivity implements DatePickerDialog.
         JobTitle = PostTitle.getText().toString();
         Description = PostDescription.getText().toString();
 
-        if (ImageUri==null)
-        {
-            Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show();
-
-        }
-        else if (TextUtils.isEmpty(JobTitle))
+        if (TextUtils.isEmpty(JobTitle))
         {
             Toast.makeText(this, "Please write a job title", Toast.LENGTH_SHORT).show();
         }
@@ -150,7 +145,7 @@ public class PostActivity extends AppCompatActivity implements DatePickerDialog.
     {
 
         loadingBar.setTitle("Adding Job");
-        loadingBar.setMessage("Dear Admin, please wait while we are adding the new job");
+        loadingBar.setMessage("please wait while we are adding the new job");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
@@ -217,7 +212,7 @@ public class PostActivity extends AppCompatActivity implements DatePickerDialog.
     private void SaveInfoToDatabase()
     {
         HashMap<String, Object> productMap = new HashMap<>();
-        productMap.put("pid", postRandomKey);
+        productMap.put("pid", postRandomName);
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);
         productMap.put("title", JobTitle);
@@ -230,7 +225,7 @@ public class PostActivity extends AppCompatActivity implements DatePickerDialog.
                     {
                         if (task.isSuccessful())
                         {
-                            Intent PostIntent = new Intent(PostActivity.this, AdminCategoryActivity.class);
+                            Intent PostIntent = new Intent(PostActivity.this, AdminProfessionalActivity.class);
                             startActivity(PostIntent);
 
                             loadingBar.dismiss();

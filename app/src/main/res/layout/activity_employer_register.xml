@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/curve2"
+    tools:context=".EmployerRegisterActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/applogo"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/employer_fullname"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Full names"
+        android:textSize="17sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:inputType="textCapWords"
+        android:background="@drawable/bar_backgound"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
+        android:id="@+id/employer_name"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Company name"
+        android:textSize="17sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:inputType="textCapWords"
+        android:background="@drawable/bar_backgound"
+        android:layout_below="@id/employer_fullname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:id="@+id/employer_email"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Company email address"
+        android:textSize="17sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:inputType="textEmailAddress"
+        android:gravity="center"
+        android:background="@drawable/bar_backgound"
+        android:layout_below="@id/employer_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:id="@+id/employer_email_confirm"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Confirm email address"
+        android:textSize="17sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:inputType="textEmailAddress"
+        android:gravity="center"
+        android:background="@drawable/bar_backgound"
+        android:layout_below="@id/employer_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:id="@+id/employer_tel"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Company telephone number"
+        android:textSize="17sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:inputType="number"
+        android:gravity="center"
+        android:background="@drawable/bar_backgound"
+        android:layout_below="@id/employer_email_confirm"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"/>
+
+    <Button
+        android:id="@+id/verify_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttons2"
+        android:text="Get verified"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@id/employer_tel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"/>
+
+</RelativeLayout>

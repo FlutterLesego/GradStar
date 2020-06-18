@@ -20,13 +20,14 @@
                 android:id="@+id/all_posts_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="55dp"/>
+                android:layout_marginTop="55dp"
+                android:layout_marginBottom="44dp"/>
         </FrameLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="44dp"
             app:itemBackground="@android:color/white"
             app:itemTextColor="@color/colorPrimary"
             app:itemIconTint="@color/colorPrimary"

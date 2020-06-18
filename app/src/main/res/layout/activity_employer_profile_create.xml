@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:background="@drawable/curve2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/register_applogo"
+                android:layout_width="200dp"
+                android:layout_height="55dp"
+                android:src="@drawable/applogo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:layout_below="@id/register_applogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/registration_page"
+                android:text="Registration"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:padding="2dp"
+                android:layout_centerHorizontal="true"/>
+            //
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/com_name_tv"
+                android:text="Company name:"
+                android:textColor="@android:color/white"
+                android:layout_below="@id/registration_page"
+                android:padding="1dp"
+                android:layout_marginLeft="23dp"/>
+
+            <EditText
+                android:id="@+id/com_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/com_name_tv"
+                android:background="@drawable/buttons2"
+                android:padding="6dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint=" e.g. Grad Star"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                />
+
+            //
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/url_tv"
+                android:text="url:"
+                android:textColor="@android:color/white"
+                android:layout_below="@id/com_name"
+                android:padding="1dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="5dp"/>
+
+            <EditText
+                android:id="@+id/url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/url_tv"
+                android:background="@drawable/buttons2"
+                android:padding="6dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint=" e.g. www.gradstar.co.za"
+                android:inputType="textWebEditText"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                />
+            //
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/contact_name_tv"
+                android:text="Grad contact name:"
+                android:textColor="@android:color/white"
+                android:layout_below="@id/url"
+                android:padding="1dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="5dp"/>
+
+            <EditText
+                android:id="@+id/contact_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/contact_name_tv"
+                android:background="@drawable/buttons2"
+                android:padding="6dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint=" e.g. Chris Mofokeng"
+                android:inputType="textCapWords"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                />
+            //
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tel_employer_tv"
+                android:text="Telephone number:"
+                android:textColor="@android:color/white"
+                android:layout_below="@id/contact_name"
+                android:padding="1dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="5dp"/>
+
+            <EditText
+                android:id="@+id/tel_employer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tel_employer_tv"
+                android:background="@drawable/buttons2"
+                android:padding="6dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint=" e.g. 011 203 2800"
+                android:inputType="number"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                />
+            //
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/email_employer_tv"
+                android:text="Email address:"
+                android:textColor="@android:color/white"
+                android:layout_below="@id/tel_employer"
+                android:padding="1dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="5dp"/>
+
+            <EditText
+                android:id="@+id/email_employer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/email_employer_tv"
+                android:background="@drawable/buttons2"
+                android:padding="6dp"
+                android:gravity="start"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint=" e.g. gradstar@info.co.za"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                />
+            //
+            <Button
+                android:id="@+id/programme_app_open"
+                android:layout_width="385dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:text="Grad programme application opening date"
+                android:layout_below="@id/email_employer"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/buttons2"/>
+            //
+
+            <Button
+                android:id="@+id/programme_app_close"
+                android:layout_width="385dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:text="Grad programme application closing date"
+                android:layout_below="@id/programme_app_open"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/buttons2"/>
+            //
+
+            <Button
+                android:id="@+id/employment_date"
+                android:layout_width="385dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:text="Employment start date"
+                android:layout_below="@id/programme_app_close"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/buttons2"/>
+
+            //
+
+            <Button
+                android:id="@+id/universities_btn"
+                android:layout_width="385dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:hint="UNIVERSITIES PREFERRED"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:layout_below="@id/employment_date"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/buttons2"/>
+
+            //
+
+            <Button
+                android:id="@+id/courses_btn"
+                android:layout_width="384dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:hint="COURSES PREFERRED"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:layout_below="@id/universities_btn"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/buttons2"/>
+
+            <RadioGroup
+                android:id="@+id/honours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/courses_btn"
+                android:layoutDirection="inherit"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Honours?"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"/>
+
+
+                <RadioButton
+                    android:id="@+id/radio_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Yes"
+                    android:textColor="@android:color/white"
+                    android:checked="true"
+                    android:onClick="checkButton"
+                    tools:ignore="OnClick" />
+
+                <RadioButton
+                    android:id="@+id/radio_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="No"
+                    android:scrollHorizontally="true"
+                    android:onClick="checkButton"
+                    tools:ignore="OnClick" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/grade_btn"
+                android:layout_width="385dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:hint="Minimum Grade Average"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:layout_below="@id/honours"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/buttons2"/>
+
+            <TextView
+                android:id="@+id/specs_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:textColor="@android:color/white"
+                android:text="Any other specifications for applicants?"
+                android:layout_below="@id/grade_btn"
+                android:layout_marginTop="15dp"/>
+
+            <EditText
+                android:id="@+id/spec_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/specs_tv"
+                android:background="@drawable/buttons2"
+                android:padding="6dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                />
+
+            <TextView
+                android:id="@+id/overview_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:textColor="@android:color/white"
+                android:text="200 word overview on the grad programme"
+                android:layout_below="@id/spec_edit"
+                android:layout_marginTop="15dp"/>
+
+            <EditText
+                android:id="@+id/overview_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/overview_tv"
+                android:background="@drawable/buttons2"
+                android:padding="6dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                />
+
+            <TextView
+                android:id="@+id/apply_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:textColor="@android:color/white"
+                android:text="How do I apply?"
+                android:layout_below="@id/overview_edit"
+                android:layout_marginTop="15dp"/>
+
+            <EditText
+                android:id="@+id/apply_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/apply_tv"
+                android:background="@drawable/buttons2"
+                android:padding="6dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                />
+
+            <TextView
+                android:id="@+id/anything_else_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:textColor="@android:color/white"
+                android:text="Anything else I need to know?"
+                android:layout_below="@id/apply_edit"
+                android:layout_marginTop="15dp"/>
+
+            <EditText
+                android:id="@+id/anything_else_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/anything_else_tv"
+                android:background="@drawable/buttons2"
+                android:padding="6dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

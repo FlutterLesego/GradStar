@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity
     private EditText InputEmailAddress, InputPassword;
     private Button LoginButton, RegisterButton;
     private ProgressDialog loadingBar;
-    private TextView AdminLink, NotAdmin;
+    private ImageView adminPanel;
 
     private FirebaseAuth firebaseAuth;
 
@@ -46,11 +46,21 @@ public class LoginActivity extends AppCompatActivity
         LoginButton = (Button) findViewById(R.id.login_btn);
         InputEmailAddress = (EditText) findViewById(R.id.login_email_address);
         InputPassword = (EditText) findViewById(R.id.login_password_input);
-        AdminLink = (TextView) findViewById(R.id.admin_panel);
-        NotAdmin = (TextView) findViewById(R.id.not_admin_panel);
+        adminPanel = (ImageView) findViewById(R.id.login_applogo);
         loadingBar= new ProgressDialog(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
+
+        adminPanel.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v)
+            {
+                Intent adminIntent = new Intent(LoginActivity.this, AdminLoginActivity.class);
+                startActivity(adminIntent);
+                return false;
+
+            }
+        });
 
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
@@ -68,32 +78,8 @@ public class LoginActivity extends AppCompatActivity
             {
                 loadingBar.show();
                 loadingBar.setMessage("Please wait...");
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, DirectorActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        AdminLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                LoginButton.setText("Login admin");
-                AdminLink.setVisibility(View.INVISIBLE);
-                NotAdmin.setVisibility(View.VISIBLE);
-                parentDbName = "Admins";
-
-            }
-        });
-
-        NotAdmin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                LoginButton.setText("Login");
-                AdminLink.setVisibility(View.VISIBLE);
-                NotAdmin.setVisibility(View.INVISIBLE);
-                parentDbName = "Users";
-
             }
         });
 

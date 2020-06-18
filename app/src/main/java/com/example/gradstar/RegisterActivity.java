@@ -130,6 +130,8 @@ public class RegisterActivity extends AppCompatActivity
         }
     }
 
+
+
     //private void Validateemailaddress(final String name, final String email, final String password)
     //{
     //    final DatabaseReference RootRef;

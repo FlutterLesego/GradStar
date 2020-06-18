@@ -3,20 +3,30 @@ package com.example.gradstar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gradstar.Model.Posts;
+import com.example.gradstar.ViewHolder.PostsViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 public class StudentsHomeActivity extends AppCompatActivity
 {
@@ -24,6 +34,7 @@ public class StudentsHomeActivity extends AppCompatActivity
     private RecyclerView postList;
     private Toolbar mToolBar;
     private ProgressDialog loadingBar;
+    private DatabaseReference UserRef, PostsRef;
 
 
     @Override
@@ -34,7 +45,15 @@ public class StudentsHomeActivity extends AppCompatActivity
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
+        UserRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        PostsRef = FirebaseDatabase.getInstance().getReference().child("Posts");
 
+        postList = (RecyclerView) findViewById(R.id.all_posts_list);
+        postList.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        postList.setLayoutManager(linearLayoutManager);
 
         //Initialize and assign variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_bar);
@@ -81,6 +100,8 @@ public class StudentsHomeActivity extends AppCompatActivity
                 return false;
             }
         });
+
+
 
         FloatingActionButton fab_signout = findViewById(R.id.fab_signout_btn);
 
@@ -167,6 +188,8 @@ public class StudentsHomeActivity extends AppCompatActivity
             }
         });
 
+        onStart();
+
         //Toolbar
        // mToolBar = (Toolbar) findViewById(R.id.main_page_toolbar);
        // setSupportActionBar(mToolBar);
@@ -234,5 +257,39 @@ public class StudentsHomeActivity extends AppCompatActivity
       //          startActivity(logoutIntent);
       //          break;
       //  }
+    }
+
+
+    protected void onStart()
+    {
+        super.onStart();
+
+        FirebaseRecyclerOptions<com.example.gradstar.Model.Posts> options =
+                new FirebaseRecyclerOptions.Builder<com.example.gradstar.Model.Posts>().setQuery(PostsRef, com.example.gradstar.Model.Posts.class)
+                        .build();
+
+        FirebaseRecyclerAdapter<com.example.gradstar.Model.Posts, PostsViewHolder> adapter =
+                new FirebaseRecyclerAdapter<com.example.gradstar.Model.Posts, PostsViewHolder>(options) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull PostsViewHolder postsViewHolder, int i, @NonNull Posts posts)
+                    {
+                        postsViewHolder.txtUser.setText(posts.getName());
+                        postsViewHolder.txtDescription.setText(posts.getPostDescription());
+                        Picasso.get().load(posts.getProfileImage()).into(postsViewHolder.userProfileImage);
+                        Picasso.get().load(posts.getPostImage()).into(postsViewHolder.postImage);
+
+                    }
+
+                    @NonNull
+                    @Override
+                    public PostsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+                    {
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.posts_layout, parent, false);
+                        PostsViewHolder holder = new PostsViewHolder(view);
+                        return holder;
+                    }
+                };
+        postList.setAdapter(adapter);
+        adapter.startListening();
     }
 }

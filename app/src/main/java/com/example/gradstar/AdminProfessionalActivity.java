@@ -3,14 +3,20 @@ package com.example.gradstar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class AdminProfessionalActivity extends AppCompatActivity {
+
+    private ImageView jobAdd;
+    private RecyclerView jobsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +26,16 @@ public class AdminProfessionalActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setTitle("Professional");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        jobAdd = (ImageView) findViewById(R.id.job_add);
+        jobAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent categoriesIntent = new Intent(AdminProfessionalActivity.this, AdminCategoryActivity.class);
+                startActivity(categoriesIntent);
+            }
+        });
 
         //initialize and assign variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.admin_bottom_nav_bar);

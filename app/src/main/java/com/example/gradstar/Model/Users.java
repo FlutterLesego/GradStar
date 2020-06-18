@@ -2,18 +2,28 @@ package com.example.gradstar.Model;
 
 public class Users
 {
-    private String name, email, password;
+    private String name, email,phone, password;
 
     public Users()
     {
 
     }
 
-    public Users(String name, String phone, String password)
+    public Users(String name, String email, String phone, String password)
     {
         this.name = name;
         this.email = phone;
         this.password = password;
+        this.phone = phone;
+    }
+
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getName() {

@@ -12,7 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileCreateActivity"></activity>
+        <activity android:name=".EmployerProfileCreateActivity"></activity>
+        <activity android:name=".VerifyCompanyActivity" />
+        <activity android:name=".WaitForVerificationActivity" />
+        <activity android:name=".EmployerRegisterActivity" />
+        <activity android:name=".DirectorActivity" />
+        <activity android:name=".AdminLoginActivity" />
+        <activity android:name=".ProfileCreateActivity" />
         <activity android:name=".EmailVerificationActivity" />
         <activity android:name=".FeedActivity" />
         <activity
@@ -86,6 +92,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".EmployerRegisterActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

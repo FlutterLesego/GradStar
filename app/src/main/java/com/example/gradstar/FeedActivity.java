@@ -20,14 +20,11 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-
-import java.util.HashMap;
+import com.google.firebase.storage.StorageTask;
 
 public class FeedActivity extends AppCompatActivity
 {
@@ -36,12 +33,14 @@ public class FeedActivity extends AppCompatActivity
 
     Uri imageUri;
     String imageUrl;
+    StorageTask uploadTask;
     StorageReference storageReference;
     EditText description;
     ImageView close, image_add;
 
     TextView post;
-    private UploadTask uploadTask;
+
+    ProgressDialog loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -54,7 +53,18 @@ public class FeedActivity extends AppCompatActivity
         post = findViewById(R.id.post);
         description = findViewById(R.id.description);
 
-        storageReference = FirebaseStorage.getInstance().getReference("posts");
+        loader = new ProgressDialog(this);
+
+        storageReference = FirebaseStorage.getInstance().getReference().child("Posts");
+
+
+        image_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                OpenGallery();
+            }
+        });
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,35 +78,33 @@ public class FeedActivity extends AppCompatActivity
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadImage();
+                UploadImage();
             }
         });
     }
 
-
-    private String getFileExtension(Uri uri){
-        ContentResolver contentResolver = getContentResolver();
-        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
-
+    private void OpenGallery()
+    {
+        Intent galleryIntent = new Intent();
+        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+        galleryIntent.setType("image/+");
+        startActivityForResult(galleryIntent,Gallery_Pick);
     }
 
-    private void uploadImage()
+    private void UploadImage()
     {
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Posting...");
-        progressDialog.show();
+
+        loader = new ProgressDialog(this);
+        loader.setMessage("Sharing post...");
+        loader.show();
 
         if (imageUri !=null)
         {
             final StorageReference referencefile = storageReference.child(System.currentTimeMillis()
-                    +"."+ getFileExtension(imageUri));
+            +"."+ getFileExtension(imageUri));
 
             uploadTask = referencefile.putFile(imageUri);
-
-
-            uploadTask.continueWithTask(new Continuation()
-            {
+            uploadTask.continueWithTask(new Continuation() {
                 @Override
                 public Object then(@NonNull Task task) throws Exception
                 {
@@ -104,33 +112,23 @@ public class FeedActivity extends AppCompatActivity
                     {
                         throw task.getException();
                     }
-
                     return referencefile.getDownloadUrl();
                 }
             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
-                public void onComplete(@NonNull Task <Uri> task) {
+                public void onComplete(@NonNull Task <Uri>task) {
+
                     if (task.isSuccessful())
                     {
                         Uri downloadUri = task.getResult();
                         imageUrl = downloadUri.toString();
 
                         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
-                        String postid = reference.push().getKey();
-                        HashMap<String, Object> hashMap = new HashMap<>();
 
-                        hashMap.put("postid", postid);
-                        hashMap.put("postimage", imageUrl);
-                        hashMap.put("description", description.getText().toString());
-                        hashMap.put("publisher", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        SavingInfoToDatabase();
 
-                        reference.child(postid).setValue(hashMap);
-                        progressDialog.dismiss();
-                        
-                        startActivity(new Intent(FeedActivity.this, AdminPanelActivity.class));
-                        finish();
                     }
-                    else 
+                    else
                     {
                         Toast.makeText(FeedActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
                     }
@@ -141,11 +139,23 @@ public class FeedActivity extends AppCompatActivity
                     Toast.makeText(FeedActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-        }else {
+        }else
+        {
             Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show();
         }
     }
 
+    public void SavingInfoToDatabase()
+    {
+
+    }
+
+    private String getFileExtension(Uri uri){
+        ContentResolver contentResolver = getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -156,11 +166,13 @@ public class FeedActivity extends AppCompatActivity
             imageUri = data.getData();
             image_add.setImageURI(imageUri);
         }
-        else 
+        else
         {
-            Toast.makeText(this, "Error! Please try again.", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(FeedActivity.this, AdminPanelActivity.class));
+            Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+            loader.dismiss();
+            Toast.makeText(this, "Please try again", Toast.LENGTH_SHORT).show();
 
+            startActivity(new Intent(FeedActivity.this, StudentsHomeActivity.class));
             finish();
         }
     }

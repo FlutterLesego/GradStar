@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/curve2"
+    tools:context=".WaitForVerificationActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/applogo"
+        android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/congrats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:layout_marginTop="10dp"
+            android:text="Congratulations!"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="35sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/step"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/congrats"
+            android:layout_marginTop="10dp"
+            android:text="You are one step away from being \na part of the Grad Star family!"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/step"
+            android:layout_marginTop="5dp"
+            android:text="While you are being verified \nby our support team, \nlet's watch videos from our \nprevious GradStar Awards \nevents."
+            android:textColor="@android:color/white"
+            android:textStyle="normal"
+            android:textSize="25sp"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/view_videos"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttons2"
+            android:text="View videos"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_below="@id/tour"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"/>
+
+        <Button
+            android:id="@+id/back_home"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttons2"
+            android:text="Go back home"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_below="@id/view_videos"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"/>
+
+
+    <VideoView
+        android:id="@+id/videos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    </RelativeLayout>
+
+</ScrollView>
