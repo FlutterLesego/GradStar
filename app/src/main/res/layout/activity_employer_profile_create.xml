@@ -183,6 +183,16 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/buttons2"/>
+
+            <TextView
+                android:id="@+id/programme_app_open_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_below="@id/programme_app_open"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                />
             //
 
             <Button
@@ -191,10 +201,20 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="15dp"
                 android:text="Grad programme application closing date"
-                android:layout_below="@id/programme_app_open"
+                android:layout_below="@id/programme_app_open_tv"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/buttons2"/>
+
+            <TextView
+                android:id="@+id/programme_app_close_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_below="@+id/programme_app_close"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                />
             //
 
             <Button
@@ -203,13 +223,23 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="15dp"
                 android:text="Employment start date"
-                android:layout_below="@id/programme_app_close"
+                android:layout_below="@+id/programme_app_close_tv"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/buttons2"/>
 
-            //
 
+
+            <TextView
+                android:id="@+id/employment_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_below="@id/employment_date"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                />
+            //
             <Button
                 android:id="@+id/universities_btn"
                 android:layout_width="385dp"
@@ -217,10 +247,21 @@
                 android:layout_marginTop="15dp"
                 android:hint="UNIVERSITIES PREFERRED"
                 android:textColorHint="@color/colorPrimaryDark"
-                android:layout_below="@id/employment_date"
+                android:layout_below="@id/employment_date_tv"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/buttons2"/>
+
+            <TextView
+                android:id="@+id/universities_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginStart="23dp"
+                android:layout_below="@id/universities_btn"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                />
 
             //
 
@@ -231,17 +272,28 @@
                 android:layout_marginTop="15dp"
                 android:hint="COURSES PREFERRED"
                 android:textColorHint="@color/colorPrimaryDark"
-                android:layout_below="@id/universities_btn"
+                android:layout_below="@id/universities_tv"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/buttons2"/>
+
+            <TextView
+                android:id="@+id/course_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginStart="23dp"
+                android:layout_below="@id/courses_btn"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                />
 
             <RadioGroup
                 android:id="@+id/honours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_below="@id/courses_btn"
+                android:layout_below="@id/course_tv"
                 android:layoutDirection="inherit"
                 >
 
@@ -290,13 +342,23 @@
                 android:background="@drawable/buttons2"/>
 
             <TextView
+                android:id="@+id/grade_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_below="@id/grade_btn"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                />
+
+            <TextView
                 android:id="@+id/specs_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
                 android:textColor="@android:color/white"
                 android:text="Any other specifications for applicants?"
-                android:layout_below="@id/grade_btn"
+                android:layout_below="@id/grade_tv"
                 android:layout_marginTop="15dp"/>
 
             <EditText
@@ -388,6 +450,44 @@
                 android:textSize="15sp"
                 android:textStyle="normal"
                 />
+
+            <TextView
+                android:id="@+id/password_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:textColor="@android:color/white"
+                android:text="Password"
+                android:layout_below="@id/anything_else_edit"
+                android:layout_marginTop="15dp"/>
+
+            <EditText
+                android:id="@+id/password_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/password_tv"
+                android:background="@drawable/buttons2"
+                android:padding="6dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="textPassword"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                />
+
+            <Button
+                android:id="@+id/register_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Register"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:layout_below="@id/password_edit"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/buttons2"/>
 
         </RelativeLayout>
     </ScrollView>

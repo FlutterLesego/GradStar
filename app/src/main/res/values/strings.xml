@@ -167,7 +167,99 @@
         <item>Other – please specify </item>
     </string-array>
 
+    <string-array name="university_list">
+        <item>AAA School of Advertising</item>
+        <item>Cape Peninsula University of Technology</item>
+        <item>Central University of Technology</item>
+        <item>Durban University of Technology</item>
+        <item>Explore Data Science Academy</item>
+        <item>IIE Varsity College</item>
+        <item>IIE MSA</item>
+        <item>Mangosuthu University of Technology</item>
+        <item>Nelson Mandela University</item>
+        <item>North-West University</item>
+        <item>Pearson Institute/CTI Education</item>
+        <item>Project Codex</item>
+        <item>Rhodes University</item>
+        <item>Sefako Makgatho Health Science University</item>
+        <item>Sol Plaatjie Unversity</item>
+        <item>Stadio Multiversity</item>
+        <item>Stellenbosch University</item>
+        <item>TSIBA</item>
+        <item>Tshwane University of Technology</item>
+        <item>University of Cape Town</item>
+        <item>University of Fort Hare</item>
+        <item>University of the Free State</item>
+        <item>University of Johannesburg</item>
+        <item>University of KwaZulu-Natal</item>
+        <item>University of Limpopo</item>
+        <item>University of Mpumalanga</item>
+        <item>University of Pretoria</item>
+        <item>University of South Africa</item>
+        <item>University of Venda</item>
+        <item>University of the Western Cape</item>
+        <item>University of the Witwatersrand</item>
+        <item>University of Zululand</item>
+        <item>Vaal University of Technology</item>
+        <item>Vega School of Brand Leadership</item>
+        <item>Walter Sisulu University of Technology and Science</item>
+        <item>We Think Code</item>
+        <item>Other – please specify </item>
+    </string-array>
+
     <string-array name="courses_preffered">
+        <item>Accounting and related services</item>
+        <item>Aerospace, Aeronautical and astronautical engineering</item>
+        <item>Agricultural/biological engineering and bio-engineering</item>
+        <item>Agriculture, agricultural operations and related sciences</item>
+        <item>Architecture</item>
+        <item>Biomedical, medical engineering</item>
+        <item>Building/construction site management</item>
+        <item>Business administration, management and operations</item>
+        <item>Business Science</item>
+        <item>Chemical Engineering</item>
+        <item>City/urban, community and regional planning</item>
+        <item>Civil Engineering</item>
+        <item>Clinical Psychology</item>
+        <item>Communication and media studies</item>
+        <item>Communication and media studies</item>
+        <item>Computer Science</item>
+        <item>Consumer Sciences</item>
+        <item>Economics</item>
+        <item>Education</item>
+        <item>Electrical, electronics and communications engineering</item>
+        <item>Engineering Mechanics</item>
+        <item>Environmental Design/Architecture</item>
+        <item>Finance and Financial Management services</item>
+        <item>Health professions and related clinical sciences</item>
+        <item>Hospitality administration/management</item>
+        <item>Human Resource Management and Services</item>
+        <item>Industrial and organisational psychology</item>
+        <item>Industrial engineering</item>
+        <item>Insurance</item>
+        <item>Journalism</item>
+        <item>Law</item>
+        <item>Life Sciences</item>
+        <item>Management Information Systems and Services</item>
+        <item>Management Sciences and Quantitative Methods</item>
+        <item>Marketing</item>
+        <item>Mathematics</item>
+        <item>Mechanical and mechatronic engineering</item>
+        <item>Metallurgical Engineering</item>
+        <item>Mining and mineral engineering</item>
+        <item>Physical Sciences</item>
+        <item>Psychology</item>
+        <item>Public Management and services</item>
+        <item>Quantity Surveying</item>
+        <item>Social Sciences</item>
+        <item>Statistics</item>
+        <item>Supply Chain Management, Logistics</item>
+        <item>Taxation</item>
+        <item>Visual and Performing Arts</item>
+        <item>Other - please specify</item>
+    </string-array>
+
+    <string-array name="course_list">
         <item>Accounting and related services</item>
         <item>Aerospace, Aeronautical and astronautical engineering</item>
         <item>Agricultural/biological engineering and bio-engineering</item>
@@ -221,10 +313,12 @@
 
     <string-array name="grade_average">
         <item>90+</item>
-        <item>80+</item>
-        <item>70+</item>
-        <item>60+</item>
-        <item>50+</item>
+        <item>80% - 89%</item>
+        <item>70% - 79%</item>
+        <item>60% - 69%</item>
+        <item>50% - 59%</item>
+        <item>40% - 49%</item>
+        <item>0% - 39%</item>
         <item>No minimum</item>
     </string-array>
 </resources>

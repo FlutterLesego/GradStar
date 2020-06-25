@@ -34,7 +34,9 @@ public class LoginActivity extends AppCompatActivity
     private FirebaseAuth firebaseAuth;
 
 
-    private String parentDbName = "Users";
+    private String parentDbName = "users";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -67,6 +69,8 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
+                loadingBar.setMessage("Logging in...");
+                loadingBar.show();
                 LoginUser();
 
             }
@@ -78,8 +82,9 @@ public class LoginActivity extends AppCompatActivity
             {
                 loadingBar.show();
                 loadingBar.setMessage("Please wait...");
-                Intent intent = new Intent(LoginActivity.this, DirectorActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
+                loadingBar.dismiss();
             }
         });
 
@@ -87,8 +92,9 @@ public class LoginActivity extends AppCompatActivity
 
     private void LoginUser()
     {
-        String email = InputEmailAddress.getText().toString();
-        String password = InputPassword.getText().toString();
+        loadingBar.dismiss();
+        final String email = InputEmailAddress.getText().toString();
+        final String password = InputPassword.getText().toString();
 
         if (TextUtils.isEmpty(email))
         {
@@ -108,26 +114,45 @@ public class LoginActivity extends AppCompatActivity
                     loadingBar.setMessage("Please wait...");
                     loadingBar.setCanceledOnTouchOutside(false);
                     loadingBar.show();
-                    firebaseAuth.signInWithEmailAndPassword(InputEmailAddress.getText().toString(),
-                            InputPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    firebaseAuth.signInWithEmailAndPassword(email,
+                            password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task)
                         {
                             loadingBar.dismiss();
                             if (task.isSuccessful())
                             {
-                                if (firebaseAuth.getCurrentUser().isEmailVerified()
-                                ) {
-                                    startActivity(new Intent(LoginActivity.this, StudentsHomeActivity.class));
+                                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference()
+                                        .child("users").child(firebaseAuth.getCurrentUser().getUid());
 
-                                }
-                                else
-                                {
-                                    Toast.makeText(LoginActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
-                                }
+                                userRef.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                                    {
+                                        if (firebaseAuth.getCurrentUser().isEmailVerified()
+                                        ) {
+                                            loadingBar.dismiss();
+                                            startActivity(new Intent(LoginActivity.this, StudentsHomeActivity.class));
+
+                                        }
+                                        else
+                                        {
+                                            loadingBar.dismiss();
+                                            Toast.makeText(LoginActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
                             }
                             else
                             {
+                                loadingBar.dismiss();
                                 Toast.makeText(LoginActivity.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
 
@@ -163,7 +188,7 @@ public class LoginActivity extends AppCompatActivity
                                 Intent intent = new Intent(LoginActivity.this,AdminPanelActivity.class);
                                 startActivity(intent);
                             }
-                            else if (parentDbName.equals("Users"))
+                            else if (parentDbName.equals("users"))
                             {
                                 Toast.makeText(LoginActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();

@@ -1,8 +1,9 @@
 package com.example.gradstar;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ProgressDialog;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -10,5 +11,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ProgressDialog progressDialog = new ProgressDialog(HomeActivity.this);
+        progressDialog.dismiss();
     }
 }

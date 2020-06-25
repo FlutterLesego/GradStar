@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/curve2"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/elogin_applogo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/applogo"
+        android:layout_centerHorizontal="true"
+        />
+    //
+    <EditText
+        android:id="@+id/elogin_email_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/elogin_applogo"
+        android:background="@drawable/bar_backgound"
+        android:padding="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="Email address"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/elogin_password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/elogin_email_address"
+        android:background="@drawable/bar_backgound"
+        android:padding="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:id="@+id/elinear_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/elogin_password_input"
+        android:layout_marginTop="10dp"
+        >
+
+        <com.rey.material.widget.CheckBox
+            android:id="@+id/eremember_me_chk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Material.Drawable.CheckBox"
+            android:text="Remember me"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/elogin_password_input"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            app:cbd_strokeColor="@android:color/white"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:backgroundTint="@android:color/white"
+            />
+
+        <TextView
+            android:id="@+id/eforgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot password?"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/colorPrimaryDark"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/elogin_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/elinear_layout1"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:padding="10dp"
+        android:background="@drawable/bar_backgound"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:text="Login"
+        android:textColor="@color/colorPrimaryDark"
+
+        />
+
+
+    <Button
+        android:id="@+id/eregister_btn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Create an account"
+        android:layout_below="@id/elogin_btn"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bar_backgound"
+        />
+
+
+
+</RelativeLayout>

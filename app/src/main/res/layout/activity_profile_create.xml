@@ -329,7 +329,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
-                android:layout_below="@id/university_btn"
+                android:layout_below="@+id/university_btn"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/white"
                 />
@@ -339,7 +339,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:text="Course"
-                android:layout_below="@id/universities_tv"
+                android:layout_below="@+id/universities_tv"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="15dp"
@@ -364,7 +364,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="Year available for employment"
-            android:layout_below="@id/course_tv"
+            android:layout_below="@+id/course_tv"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="15dp"
@@ -379,7 +379,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:layout_below="@id/employment_date"
+            android:layout_below="@+id/employment_date"
             android:layout_centerHorizontal="true"
             android:textColor="@android:color/white"
             />
@@ -390,7 +390,7 @@
                 android:id="@+id/qualification_tv"
                 android:text="Qualification:"
                 android:textColor="@android:color/white"
-                android:layout_below="@id/employment_date_display"
+                android:layout_below="@+id/employment_date_display"
                 android:padding="1dp"
                 android:layout_marginLeft="23dp"
                 android:layout_marginTop="5dp"/>
@@ -399,7 +399,7 @@
                 android:id="@+id/qualification_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/qualification_tv"
+                android:layout_below="@+id/qualification_tv"
                 android:background="@drawable/bar_backgound"
                 android:padding="6dp"
                 android:gravity="start"
@@ -418,7 +418,7 @@
                 android:id="@+id/major_tv"
                 android:text="Major:"
                 android:textColor="@android:color/white"
-                android:layout_below="@id/qualification_edit"
+                android:layout_below="@+id/qualification_edit"
                 android:padding="1dp"
                 android:layout_marginLeft="23dp"
                 android:layout_marginTop="5dp"/>
@@ -427,7 +427,7 @@
                 android:id="@+id/major_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/major_tv"
+                android:layout_below="@+id/major_tv"
                 android:background="@drawable/bar_backgound"
                 android:padding="6dp"
                 android:gravity="start"
@@ -446,7 +446,7 @@
                 android:id="@+id/honours_tv"
                 android:text="Honours (Yes/No)?"
                 android:textColor="@android:color/white"
-                android:layout_below="@id/major_edit"
+                android:layout_below="@+id/major_edit"
                 android:padding="1dp"
                 android:layout_marginLeft="23dp"
                 android:layout_marginTop="5dp"/>
@@ -455,7 +455,7 @@
                 android:id="@+id/honours_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/honours_tv"
+                android:layout_below="@+id/honours_tv"
                 android:background="@drawable/bar_backgound"
                 android:padding="6dp"
                 android:gravity="start"
@@ -473,7 +473,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:text="Ethnicity"
-                android:layout_below="@id/honours_edit"
+                android:layout_below="@+id/honours_edit"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="15dp"
@@ -488,7 +488,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
-                android:layout_below="@id/ethnicity_btn"
+                android:layout_below="@+id/ethnicity_btn"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/white"
                 />
@@ -498,7 +498,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:text="Gender"
-                android:layout_below="@id/ethnicity_tv"
+                android:layout_below="@+id/ethnicity_tv"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="15dp"
@@ -513,7 +513,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
-                android:layout_below="@id/gender_btn"
+                android:layout_below="@+id/gender_btn"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/white"
                 />
@@ -523,7 +523,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:text="Disability (If yes, please explain in under 30 words)"
-                android:layout_below="@id/gender_tv"
+                android:layout_below="@+id/gender_tv"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="15dp"
@@ -604,16 +604,13 @@
         //
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/number_hint"
-                android:text="Mobile:"
-                android:textColor="@android:color/white"
-                android:layout_below="@id/bursary_edit"
-                android:layout_marginLeft="19dp"
-                android:layout_toRightOf="@id/register_mobile"
-                android:padding="1dp"
-                android:layout_marginTop="5dp"/>
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="Mobile number"
+                android:layout_marginStart="23dp"
+                android:textColorHint="@android:color/white"
+                android:layout_below="@id/bursary_edit"/>
 
         <EditText
             android:id="@+id/register_mobile"
@@ -636,13 +633,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/whatsapp_hint"
-            android:text="Whatsapp (if applicable):"
+            android:text="WhatsApp (if applicable):"
             android:textColor="@android:color/white"
-            android:layout_below="@id/ethnicity_tv"
+            android:layout_below="@id/bursary_edit"
             android:layout_marginLeft="19dp"
             android:layout_toRightOf="@id/register_mobile"
-            android:padding="1dp"
-            android:layout_marginTop="5dp"/>
+            android:padding="1dp"/>
 
         <EditText
             android:id="@+id/register_whatsapp"
@@ -662,13 +658,124 @@
             android:textSize="12sp"
             android:textStyle="normal"
             />
+
+            <TextView
+                android:id="@+id/email_hint"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="Email address"
+                android:layout_marginStart="23dp"
+                android:textColorHint="@android:color/white"
+                android:layout_below="@id/register_mobile"/>
+
+            <EditText
+                android:id="@+id/register_email"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/email_hint"
+                android:background="@drawable/bar_backgound"
+                android:padding="6dp"
+                android:gravity="start"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint=" e.g. abc@def.com"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/confirm_hint"
+                android:text="Confrim email address"
+                android:textColor="@android:color/white"
+                android:layout_below="@id/register_whatsapp"
+                android:layout_marginLeft="19dp"
+                android:layout_toRightOf="@id/register_mobile"
+                android:padding="1dp"/>
+
+            <EditText
+                android:id="@+id/confirm_email"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/confirm_hint"
+                android:layout_toRightOf="@id/register_email"
+                android:background="@drawable/bar_backgound"
+                android:layout_centerInParent="true"
+                android:padding="6dp"
+                android:gravity="start"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="15dp"
+                android:hint=" e.g. adc@def.com"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                />
+
+            <TextView
+                android:id="@+id/password_hint"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:layout_marginStart="23dp"
+                android:textColorHint="@android:color/white"
+                android:layout_below="@id/register_email"/>
+
+            <EditText
+                android:id="@+id/register_password"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/password_hint"
+                android:background="@drawable/bar_backgound"
+                android:padding="6dp"
+                android:gravity="start"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:inputType="textPassword"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/confirm_password_tv"
+                android:text="Confrim password"
+                android:textColor="@android:color/white"
+                android:layout_below="@id/confirm_email"
+                android:layout_marginLeft="19dp"
+                android:layout_toRightOf="@id/register_mobile"
+                android:padding="1dp"/>
+
+            <EditText
+                android:id="@+id/confirm_password"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/confirm_password_tv"
+                android:layout_toRightOf="@id/register_email"
+                android:background="@drawable/bar_backgound"
+                android:layout_centerInParent="true"
+                android:padding="6dp"
+                android:gravity="start"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="15dp"
+                android:inputType="textPassword"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                />
+
         <Button
             android:id="@+id/proceed_btn"
-            android:layout_below="@id/register_mobile"
+            android:layout_below="@+id/register_password"
             android:layout_width="150dp"
             android:layout_centerHorizontal="true"
             android:layout_height="35dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:padding="5dp"
             android:background="@drawable/bar_backgound"
             android:textAllCaps="false"

@@ -11,6 +11,7 @@ public class DirectorActivity extends AppCompatActivity
 {
     private CardView employerCardView, studentCardView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,7 @@ public class DirectorActivity extends AppCompatActivity
         studentCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent studentRegisterIntent = new Intent(DirectorActivity.this, RegisterActivity.class);
+                Intent studentRegisterIntent = new Intent(DirectorActivity.this, LoginActivity.class);
                 startActivity(studentRegisterIntent);
             }
         });
@@ -30,7 +31,7 @@ public class DirectorActivity extends AppCompatActivity
         employerCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent employerRegisterIntent = new Intent(DirectorActivity.this, EmployerRegisterActivity.class);
+                Intent employerRegisterIntent = new Intent(DirectorActivity.this, EmployerLoginActivity.class);
                 startActivity(employerRegisterIntent);
             }
         });
