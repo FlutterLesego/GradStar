@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchingActivity">
+
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="2dp"
+        android:src="@drawable/ic_arrow_pink"
+        />
+    <EditText
+        android:id="@+id/searching"
+        android:layout_width="310dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="4dp"
+        android:hint="Search here"
+        android:gravity="center"
+        android:background="@drawable/input_design"/>
+
+        <TextView
+            android:id="@+id/industry_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:text="Industry"
+            android:layout_below="@id/searching"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:background="@drawable/buttons"/>
+
+        <TextView
+            android:id="@+id/employment_date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="10dp"
+            android:text="Employment Date"
+            android:layout_below="@id/searching"
+            android:layout_toRightOf="@id/location_tv"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:background="@drawable/buttons"/>
+
+        <TextView
+            android:id="@+id/location_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="10dp"
+            android:text="Location"
+            android:layout_toRightOf="@id/industry_tv"
+            android:layout_below="@id/searching"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:background="@drawable/buttons" />
+
+    <TextView
+        android:id="@+id/industry_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@id/industry_tv"/>
+
+    <TextView
+        android:id="@+id/location_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@id/industry_selected"/>
+
+    <TextView
+        android:id="@+id/employment_date_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@id/location_selected"/>
+
+    <ImageView
+        android:id="@+id/search_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_search"
+        android:layout_marginStart="9dp"
+        android:layout_toEndOf="@id/searching"/>
+
+
+</RelativeLayout>

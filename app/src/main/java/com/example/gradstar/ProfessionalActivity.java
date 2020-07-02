@@ -3,7 +3,8 @@ package com.example.gradstar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,7 @@ public class ProfessionalActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     private EmployerAdapter employerAdapter;
     private List<Employers> mEmployers;
-    EditText search_bar;
+    TextView search_here;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,17 @@ public class ProfessionalActivity extends AppCompatActivity {
 
                 }
                 return false;
+            }
+        });
+
+        search_here = findViewById(R.id.search_here);
+        search_here.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent searchIntent = new Intent(ProfessionalActivity.this, SearchingActivity.class);
+                startActivity(searchIntent);
+
             }
         });
 

@@ -24,7 +24,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -70,6 +69,7 @@ public class EmployerProfileCreateActivity extends AppCompatActivity implements 
 
     FirebaseAuth eAuth;
     DatabaseReference employerReference;
+    String currentEmployerId;
     ProgressDialog pd;
 
     @Override
@@ -95,6 +95,10 @@ public class EmployerProfileCreateActivity extends AppCompatActivity implements 
         employerPassword = findViewById(R.id.password_edit);
         proceedButton = findViewById(R.id.register_btn);
 
+        eAuth = FirebaseAuth.getInstance();
+        currentEmployerId = eAuth.getCurrentUser().getUid();
+        employerReference = FirebaseDatabase.getInstance().getReference().child("employers").child(currentEmployerId);
+
         proceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -102,7 +106,6 @@ public class EmployerProfileCreateActivity extends AppCompatActivity implements 
                 pd = new ProgressDialog(EmployerProfileCreateActivity.this);
                 pd.setTitle("Creating Account");
                 pd.setMessage("Please wait while we verify your credentials");
-                pd.setIcon(R.drawable.ic_star_24dp);
                 pd.show();
 
                 String str_companyName = companyName.getText().toString();
@@ -432,35 +435,35 @@ public class EmployerProfileCreateActivity extends AppCompatActivity implements 
                                  final String coursesPref, final String gradeAverage, final String applicantsSpecs, final String progOverview,
                                  final String applyDetails, final String anythingElse, final String employerPassword){
 
-        pd.dismiss();
+        pd.setTitle("Registering");
+        pd.setMessage("Please wait while we register your account...");
+        pd.show();
+        pd.setCanceledOnTouchOutside(true);
 
         eAuth.createUserWithEmailAndPassword(companyEmail, employerPassword).addOnCompleteListener(EmployerProfileCreateActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful())
                 {
-                    FirebaseUser firebaseUser = eAuth.getCurrentUser();
-                    String employerId = firebaseUser.getUid();
-                    employerReference = FirebaseDatabase.getInstance().getReference().child("employers").child(employerId);
 
-                    HashMap<String, Object> hashMap = new HashMap<>();
-                    hashMap.put("id", employerId);
-                    hashMap.put("company", companyName);
-                    hashMap.put("website", companyEmail);
-                    hashMap.put("grad contact name", gradContactName);
-                    hashMap.put("telephone", telNumber);
-                    hashMap.put("open date", openDate);
-                    hashMap.put("close date", closeDate);
-                    hashMap.put("employment start date", employmentStartDate);
-                    hashMap.put("universities preferred", universitiesPref);
-                    hashMap.put("courses preferred", coursesPref);
-                    hashMap.put("grade average", gradeAverage);
-                    hashMap.put("specifications", applicantsSpecs);
-                    hashMap.put("overview", progOverview);
-                    hashMap.put("how to apply", applyDetails);
-                    hashMap.put("anything else?", anythingElse);
-                    hashMap.put("employer password", employerPassword);
-                    employerReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    HashMap<String, Object> employerMap = new HashMap<>();
+                    employerMap.put("id", currentEmployerId);
+                    employerMap.put("company", companyName);
+                    employerMap.put("email address", companyEmail);
+                    employerMap.put("grad contact name", gradContactName);
+                    employerMap.put("telephone", telNumber);
+                    employerMap.put("open date", openDate);
+                    employerMap.put("close date", closeDate);
+                    employerMap.put("employment start date", employmentStartDate);
+                    employerMap.put("universities preferred", universitiesPref);
+                    employerMap.put("courses preferred", coursesPref);
+                    employerMap.put("grade average", gradeAverage);
+                    employerMap.put("specifications", applicantsSpecs);
+                    employerMap.put("overview", progOverview);
+                    employerMap.put("how to apply", applyDetails);
+                    employerMap.put("anything else?", anythingElse);
+                    employerMap.put("employer password", employerPassword);
+                    employerReference.updateChildren(employerMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful())
@@ -476,7 +479,7 @@ public class EmployerProfileCreateActivity extends AppCompatActivity implements 
                 }
                 else 
                 {
-                    Toast.makeText(EmployerProfileCreateActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EmployerProfileCreateActivity.this, "Error: " + task.getException().getMessage() + "!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

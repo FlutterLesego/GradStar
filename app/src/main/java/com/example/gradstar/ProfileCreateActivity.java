@@ -19,15 +19,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ProfileCreateActivity extends AppCompatActivity{
 
-    private String [] employmentDateList, universityList, courseList, gradeList, ethnicityList, genderList, disabilityList, bursaryList;
+    String[] universityList;
+    boolean[] checkUniversity;
+    ArrayList<Integer> universityName = new ArrayList<>();
+
+    private String [] employmentDateList, courseList, gradeList, ethnicityList, genderList, disabilityList, bursaryList;
     private EditText InputName, InputIdNumber, InputLanguage, InputStudentNumber, InputHobbies, InputNationality, InputMajor;
     private EditText InputJobs, InputTraits, InputCompanies, InputQualification, InputHonours, InputDisability, InputBursary,
     InputMobileNumber, InputEmailAddress, InputWhatsapp, InputPassword, InputConfirmPassword, InputConfirmEmail;
@@ -37,7 +41,8 @@ public class ProfileCreateActivity extends AppCompatActivity{
     private Button CourseButton, GradeButton, EthnicityButton, GenderButton, DisabilityButton, BursaryButton;
     private ProgressDialog loader;
 
-    FirebaseAuth auth;
+    FirebaseAuth uAuth;
+    String currentUserId;
     DatabaseReference userReference;
 
     @Override
@@ -50,6 +55,9 @@ public class ProfileCreateActivity extends AppCompatActivity{
 
         UniversityButton = findViewById(R.id.universities_btn);
         UniversityDisplay = findViewById(R.id.universities_tv);
+
+        universityList = getResources().getStringArray(R.array.universities_preferred);
+        checkUniversity = new boolean[universityList.length];
 
         CourseButton = findViewById(R.id.courses_btn);
         CourseDisplay = findViewById(R.id.course_tv);
@@ -91,6 +99,10 @@ public class ProfileCreateActivity extends AppCompatActivity{
         InputConfirmEmail = findViewById(R.id.confirm_email);
         InputConfirmPassword = findViewById(R.id.confirm_password);
 
+        uAuth = FirebaseAuth.getInstance();
+        currentUserId = uAuth.getCurrentUser().getUid();
+        userReference = FirebaseDatabase.getInstance().getReference().child("users").child(currentUserId);
+
         loader = new ProgressDialog(this);
 
         EmploymentDate.setOnClickListener(new View.OnClickListener()
@@ -121,29 +133,66 @@ public class ProfileCreateActivity extends AppCompatActivity{
             }
         });
 
-        UniversityButton.setOnClickListener(new View.OnClickListener() {
+        /*UniversityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //universities
-                universityList = new String[]{"CUT", "DUT", "CPUT", "UP", "UCT"};
-                AlertDialog.Builder uBuilder = new AlertDialog.Builder(ProfileCreateActivity.this);
-                uBuilder.setTitle("University:");
-                uBuilder.setIcon(R.drawable.universities_icon);
-                uBuilder.setSingleChoiceItems(universityList, 0, new DialogInterface.OnClickListener() {
+                AlertDialog.Builder uniBuilder = new AlertDialog.Builder(ProfileCreateActivity.this);
+                uniBuilder.setTitle("Universities preferred:");
+                uniBuilder.setMultiChoiceItems(universityList, checkUniversity, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int position, boolean isChecked)
+                    {if (isChecked)
+                    {
+                        if (!universityName.contains(position))
+                        {
+                            universityName.add(position);
+                        }
+                    }
+                    else if (universityName.contains(position))
+                    {
+                        universityName.remove(position);
+                    }
+                    }
+                });
+                uniBuilder.setCancelable(false);
+                uniBuilder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        String university = "";
+                        for (int i = 0; i < universityName.size(); i++)
+                        {
+                            university = university + universityList[universityName.get(i)];
+                            if (i != universityName.size()-1)
+                            {
+                                university = university + ", ";
+                            }
+                        }
+                        UniversityDisplay.setText(university);
+                    }
+                });
+                uniBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        UniversityDisplay.setText(universityList[which]);
                         dialog.dismiss();
                     }
                 });
-                uBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                uniBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        for (int i = 0; i <checkUniversity.length;i++)
+                        {
+                            checkUniversity[i] = false;
+                            universityName.clear();
+                            UniversityDisplay.setText("");
+                        }
 
                     }
                 });
-                AlertDialog uDialog =uBuilder.create();
-                uDialog.show();
+                AlertDialog uniDialog = uniBuilder.create();
+                uniDialog.show();
             }
         });
 
@@ -151,14 +200,14 @@ public class ProfileCreateActivity extends AppCompatActivity{
             @Override
             public void onClick(View v)
             {
-                coursesList = new String[]{"Accounting and related services", "Aerospace, Aeronautical and astronautical engineering", "Agricultural/biological engineering and bio-engineering",
+                courseList = new String[]{"Accounting and related services", "Aerospace, Aeronautical and astronautical engineering", "Agricultural/biological engineering and bio-engineering",
                         "Agriculture, agricultural operations and related sciences", "Architecture"};
                 AlertDialog.Builder coBuilder = new AlertDialog.Builder(ProfileCreateActivity.this);
                 coBuilder.setTitle("Course:");
-                coBuilder.setSingleChoiceItems(coursesList, -1, new DialogInterface.OnClickListener() {
+                coBuilder.setSingleChoiceItems(courseList, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        CourseDisplay.setText(coursesList[which]);
+                        CourseDisplay.setText(courseList[which]);
                         dialog.dismiss();
                     }
                 });
@@ -209,7 +258,6 @@ public class ProfileCreateActivity extends AppCompatActivity{
                 ProgressDialog pd = new ProgressDialog(ProfileCreateActivity.this);
                 pd.setTitle("Creating Account");
                 pd.setMessage("Please wait while we verify your credentials");
-                pd.setIcon(R.drawable.ic_star_24dp);
                 pd.show();
 
                 String str_InputName = InputName.getText().toString();
@@ -234,8 +282,8 @@ public class ProfileCreateActivity extends AppCompatActivity{
                 String str_InputConfirmPassword = InputConfirmPassword.getText().toString();
                 String dis_GradeDisplay = GradeDisplay.getText().toString();
                 String dis_EmploymentDateDisplay = EmploymentDateDisplay.getText().toString();
-                String dis_UniversityDisplay = UniversityDisplay.getText().toString();
-                String dis_CourseDisplay = CourseDisplay.getText().toString();
+                /*String dis_UniversityDisplay = UniversityDisplay.getText().toString();
+                String dis_CourseDisplay = CourseDisplay.getText().toString();*/
                 String dis_EthnicityDisplay = EthnicityDisplay.getText().toString();
                 String dis_GenderDisplay = GenderDisplay.getText().toString();
                 String dis_DisabilityDisplay = DisabilityDisplay.getText().toString();
@@ -246,7 +294,7 @@ public class ProfileCreateActivity extends AppCompatActivity{
                         TextUtils.isEmpty(str_InputHobbies)||TextUtils.isEmpty(str_InputJobs)||TextUtils.isEmpty(str_InputTraits)||TextUtils.isEmpty(str_InputCompanies)||
                         TextUtils.isEmpty(str_InputNationality)||TextUtils.isEmpty(str_InputQualification)||TextUtils.isEmpty(str_InputMajor)||TextUtils.isEmpty(str_InputHonours)||TextUtils.isEmpty(str_InputMobileNumber)||TextUtils.isEmpty(str_InputEmailAddress)||
                         TextUtils.isEmpty(str_InputConfirmEmail)||TextUtils.isEmpty(str_InputPassword)||TextUtils.isEmpty(str_InputConfirmPassword) ||TextUtils.isEmpty(dis_GradeDisplay)
-                        ||TextUtils.isEmpty(dis_EmploymentDateDisplay) ||TextUtils.isEmpty(dis_UniversityDisplay) ||TextUtils.isEmpty(dis_CourseDisplay) ||TextUtils.isEmpty(dis_EthnicityDisplay)
+                        ||TextUtils.isEmpty(dis_EmploymentDateDisplay)||TextUtils.isEmpty(dis_EthnicityDisplay)
                         ||TextUtils.isEmpty(dis_GenderDisplay) ||TextUtils.isEmpty(dis_DisabilityDisplay) ||TextUtils.isEmpty(dis_BursaryDisplay) )
                 {
                     pd.dismiss();
@@ -269,10 +317,12 @@ public class ProfileCreateActivity extends AppCompatActivity{
                 }
                 else if (dis_DisabilityDisplay.startsWith("y")|| dis_DisabilityDisplay.startsWith("Y") && str_InputDisability.isEmpty())
                 {
+                    pd.dismiss();
                     Toast.makeText(ProfileCreateActivity.this, "Please explain your disability", Toast.LENGTH_SHORT).show();
                 }
                 else if (dis_BursaryDisplay.startsWith("y")|| dis_BursaryDisplay.startsWith("Y") && str_InputBursary.isEmpty())
                 {
+                    pd.dismiss();
                     Toast.makeText(ProfileCreateActivity.this, "Bursary provider required", Toast.LENGTH_SHORT).show();
                 }
                 else if (TextUtils.isDigitsOnly(str_InputPassword))
@@ -281,13 +331,11 @@ public class ProfileCreateActivity extends AppCompatActivity{
                     Toast.makeText(ProfileCreateActivity.this, "Password must contain at least one letter", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    pd.dismiss();
 
                     RegisterUser(str_InputName,str_InputIdNumber,str_InputLanguage,str_InputStudentNumber, str_InputHobbies, str_InputJobs,
                             str_InputTraits, str_InputCompanies, str_InputNationality, str_InputQualification, str_InputMajor, str_InputHonours,
                             str_InputDisability, str_InputBursary, str_InputMobileNumber, str_InputEmailAddress, str_InputConfirmEmail,
-                            str_InputPassword, str_InputConfirmPassword, str_InputWhatsapp, dis_GradeDisplay, dis_EmploymentDateDisplay,
-                            dis_UniversityDisplay, dis_CourseDisplay, dis_EthnicityDisplay, dis_GenderDisplay, dis_DisabilityDisplay, dis_BursaryDisplay);
+                            str_InputPassword, str_InputConfirmPassword, str_InputWhatsapp, dis_GradeDisplay, dis_EmploymentDateDisplay, dis_EthnicityDisplay, dis_GenderDisplay, dis_DisabilityDisplay, dis_BursaryDisplay);
                 }
             }
         });
@@ -405,55 +453,55 @@ public class ProfileCreateActivity extends AppCompatActivity{
                               final String str_inputHobbies, final String str_inputJobs, final String str_inputTraits, final String str_inputCompanies,
                               final String str_inputNationality, final String str_inputQualification, final String str_inputMajor, final String str_inputHonours,
                               final String str_inputDisability, final String str_inputBursary, final String str_inputMobileNumber, final String str_inputEmailAddress,
-                              String str_inputConfirmEmail, final String str_inputPassword, String str_inputConfirmPassword, final String str_inputWhatsapp,
-                              final String dis_gradeDisplay, final String dis_employmentDateDisplay, final String dis_universityDisplay, final String dis_courseDisplay,
-                              final String dis_ethnicityDisplay, final String dis_genderDisplay, final String dis_disabilityDisplay, final String dis_bursaryDisplay)
+                              final String str_inputConfirmEmail, final String str_inputPassword, final String str_inputConfirmPassword, final String str_inputWhatsapp,
+                              final String dis_gradeDisplay, final String dis_employmentDateDisplay, final String dis_ethnicityDisplay, final String dis_genderDisplay, final String dis_disabilityDisplay, final String dis_bursaryDisplay)
     {
         final ProgressDialog pd = new ProgressDialog(ProfileCreateActivity.this);
-        pd.dismiss();
+        pd.setTitle("Registering");
+        pd.setMessage("Please wait while we register your account");
+        pd.show();
+        pd.setCanceledOnTouchOutside(true);
 
-        auth.createUserWithEmailAndPassword(str_inputEmailAddress, str_inputPassword)
+        uAuth.createUserWithEmailAndPassword(str_inputEmailAddress, str_inputPassword)
                 .addOnCompleteListener(ProfileCreateActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
                         if (task.isSuccessful())
                         {
-                            FirebaseUser firebaseUser = auth.getCurrentUser();
-                            String userId = firebaseUser.getUid();
-                            userReference = FirebaseDatabase.getInstance().getReference().child("users")
-                                    .child(userId);
 
-                            HashMap<String, Object> hashMap = new HashMap<>();
-                            hashMap.put("user id", userId);
-                            hashMap.put("full names", str_inputName);
-                            hashMap.put("id number", str_inputIdNumber);
-                            hashMap.put("language", str_inputLanguage);
-                            hashMap.put("student card number", str_inputStudentNumber);
-                            hashMap.put("hobbies", str_inputHobbies);
-                            hashMap.put("part time jobs", str_inputJobs);
-                            hashMap.put("characteristics", str_inputTraits);
-                            hashMap.put("companies", str_inputCompanies);
-                            hashMap.put("nationality", str_inputNationality);
-                            hashMap.put("qualification", str_inputQualification);
-                            hashMap.put("major", str_inputMajor);
-                            hashMap.put("honours", str_inputHonours);
-                            hashMap.put("disability type", str_inputDisability);
-                            hashMap.put("bursary type", str_inputBursary);
-                            hashMap.put("mobile number", str_inputMobileNumber);
-                            hashMap.put("email address", str_inputEmailAddress);
-                            hashMap.put("password", str_inputPassword);
-                            hashMap.put("whatsapp", str_inputWhatsapp);
-                            hashMap.put("grade average", dis_gradeDisplay);
-                            hashMap.put("year available", dis_employmentDateDisplay);
-                            hashMap.put("university", dis_universityDisplay);
-                            hashMap.put("course", dis_courseDisplay);
-                            hashMap.put("ethnicity", dis_ethnicityDisplay);
-                            hashMap.put("gender", dis_genderDisplay);
-                            hashMap.put("disability", dis_disabilityDisplay);
-                            hashMap.put("bursary", dis_bursaryDisplay);
+                            HashMap<String, Object> usersMap = new HashMap<>();
+                            usersMap.put("user id", currentUserId);
+                            usersMap.put("full names", str_inputName);
+                            usersMap.put("id number", str_inputIdNumber);
+                            usersMap.put("language", str_inputLanguage);
+                            usersMap.put("student card number", str_inputStudentNumber);
+                            usersMap.put("hobbies", str_inputHobbies);
+                            usersMap.put("part time jobs", str_inputJobs);
+                            usersMap.put("characteristics", str_inputTraits);
+                            usersMap.put("companies", str_inputCompanies);
+                            usersMap.put("nationality", str_inputNationality);
+                            usersMap.put("qualification", str_inputQualification);
+                            usersMap.put("major", str_inputMajor);
+                            usersMap.put("honours", str_inputHonours);
+                            usersMap.put("disability type", str_inputDisability);
+                            usersMap.put("bursary type", str_inputBursary);
+                            usersMap.put("mobile number", str_inputMobileNumber);
+                            usersMap.put("email address", str_inputEmailAddress);
+                            usersMap.put("confirm email address", str_inputConfirmEmail);
+                            usersMap.put("password", str_inputPassword);
+                            usersMap.put("confirm password", str_inputConfirmPassword);
+                            usersMap.put("whatsapp", str_inputWhatsapp);
+                            usersMap.put("grade average", dis_gradeDisplay);
+                            usersMap.put("year available", dis_employmentDateDisplay);
+                           /*hashMap.put("university", dis_universityDisplay);
+                            hashMap.put("course", dis_courseDisplay);*/
+                            usersMap.put("ethnicity", dis_ethnicityDisplay);
+                            usersMap.put("gender", dis_genderDisplay);
+                            usersMap.put("disability", dis_disabilityDisplay);
+                            usersMap.put("bursary", dis_bursaryDisplay);
 
-                            userReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            userReference.setValue(usersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task)
                                 {
@@ -462,8 +510,12 @@ public class ProfileCreateActivity extends AppCompatActivity{
                                         pd.dismiss();
                                         Toast.makeText(ProfileCreateActivity.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(ProfileCreateActivity.this, LoginActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
+                                    }
+                                    else
+                                    {
+                                        pd.dismiss();
+                                        Toast.makeText(ProfileCreateActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
