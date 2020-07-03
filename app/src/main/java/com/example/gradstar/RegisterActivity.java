@@ -107,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity
                                         if (task.isSuccessful())
                                         {
                                             Toast.makeText(RegisterActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
-                                            Intent verifyIntent = new Intent(RegisterActivity.this, ProfileCreateActivity.class);
+                                            Intent verifyIntent = new Intent(RegisterActivity.this, LoginActivity.class);
                                             startActivity(verifyIntent);
                                         }
                                         else

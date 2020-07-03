@@ -23,7 +23,7 @@ public class DirectorActivity extends AppCompatActivity
         studentCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent studentRegisterIntent = new Intent(DirectorActivity.this, ProfileCreateActivity.class);
+                Intent studentRegisterIntent = new Intent(DirectorActivity.this, LoginActivity.class);
                 startActivity(studentRegisterIntent);
             }
         });
